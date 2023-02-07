@@ -3,7 +3,13 @@
 #include <cstdlib>
 
 
-PhoneBook::PhoneBook(void){}
+PhoneBook::PhoneBook(void){
+
+}
+
+PhoneBook::~PhoneBook(void){
+
+}
 
 void PhoneBook::fill()
 {
