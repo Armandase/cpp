@@ -6,13 +6,16 @@ class	Contact{
 	public:
 		Contact();
 		~Contact();
-		void	add(void);
+		void	Add(int index);
+		void	PrintReducedContact(void);
+		void	PrintContact(void);
 	private:
-		int			_index;
-		std::string	_first_name;
-		std::string	_last_name;
-		std::string	_nickname;
-		std::string	_secret;
+		int			_Index;
+		std::string	_FirstName;
+		std::string	_LastName;
+		std::string	_Nickname;
+		std::string	_PhoneNumber;
+		std::string	_Secret;
 };
 
 #endif

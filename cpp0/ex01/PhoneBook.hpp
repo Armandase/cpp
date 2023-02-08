@@ -7,11 +7,14 @@ class	PhoneBook{
 	public:
 		PhoneBook();
 		~PhoneBook();
-		void	fill();
-		void	search();
-		void	exit();
+		void	Fill();
+		void	Search();
+		void	Exit();
 	private:
+		void	PrintBook();
 		Contact	_Contacts[8];
+		int		_Tab[8];
+		int		_Oldest;
 };
 
 #endif

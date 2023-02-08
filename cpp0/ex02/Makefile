@@ -1,7 +1,7 @@
-NAME	= PhoneBook
+NAME	= logs
 CC		= c++
 FLAGS	= -Wall -Wextra -Werror -std=c++98
-SRC		= main.cpp Contact.cpp PhoneBook.cpp
+SRC		= tests.cpp Account.cpp
 OBJ		= ${SRC:.cpp=.o}
 
 all: ${NAME}

@@ -8,18 +8,16 @@ int	main(void)
 	PhoneBook	folder;
 
 	std::cout << "\033[1;33m    Phone Book: \033[0m" << std::endl;
-	std::cout << "\033[1;36mADD | SEARCH | EXIT\033[0m" << std::endl;
 	for(;;){
-		std::getline (std::cin, buf);
+		std::cout << "\033[1;36mADD | SEARCH | EXIT\033[0m" << std::endl;
+		if (std::getline(std::cin.ignore('\0', '\n'), buf) == false)
+			break ;
 		if (buf == "ADD" || buf == "add")
-			folder.fill();
+			folder.Fill();
 		else if (buf == "SEARCH" || buf == "search")
-			folder.search();
+			folder.Search();
 		else if (buf == "EXIT" || buf == "exit")
-			folder.exit();
-		else if (buf.length() == 0){
-			return (1);
-		}
+			folder.Exit();
 		else
 			std::cout << "Wrong command." << std::endl;
 	}
