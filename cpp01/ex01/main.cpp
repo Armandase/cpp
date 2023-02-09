@@ -3,11 +3,13 @@
 int main (void)
 {
 	Zombie*	normies;
+	int		N;
 
-	normies = newZombie("chien");
-	if (normies == NULL)
-		return (1);
-	normies->announce();
-	randomChump("chat");
-	delete normies;
+	N = 8;
+	normies = zombieHorde(N, "chimpanze");
+	for (int i = 0; i < N; i++)
+	{
+		normies[i].announce();
+	}
+	delete[] normies;
 }
