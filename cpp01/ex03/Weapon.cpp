@@ -1,24 +1,18 @@
 #include "Weapon.hpp"
+#include <iostream>
 
-Weapon::Weapon(){
-	return;
+Weapon::Weapon(std::string type){
+	setType(type);
 }
 
 Weapon::~Weapon(){
 	return ;
 }
 
-Weapon::Weapon(const Weapon &copy)
-{
-	Weapon	ret
-	return ()
-}
-
-const std::string&	getType(void){
-	std::string	& ret = this->type;
-	return (ret);
+const std::string&	Weapon::getType(void){
+	return (this->_type);
 }
 
 void	Weapon::setType(std::string value){
-	this->type = value;
+	this->_type = value;
 }
