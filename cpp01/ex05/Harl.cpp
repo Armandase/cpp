@@ -23,23 +23,13 @@ void	Harl::_error()
 
 void	Harl::complain(std::string level)
 {
-	void	(Harl::*tab[4])() = { };
-	int		index;
+	void	(Harl::*tab[4])() = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
+	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "DANGER"};
 
-	tab[0] = &Harl::_debug;
-	tab[1] = &Harl::_info;
-	tab[2] = &Harl::_warning;
-	tab[3] = &Harl::_error;
-	
-	if (level == "DEBUG")
-		index = 0;
-	else if (level == "INFO")
-		index = 1;
-	else if (level == "WARNING")
-		index = 2;
-	else if (level == "DANGER")
-		index = 3;
-	else
-		index = -1;
-	(tab[index]);
+	for (int i = 0; i < 4; i++){
+		if (level == levels[i]){
+			((*this).tab[i])();
+			break ;
+		}
+	}
 }
