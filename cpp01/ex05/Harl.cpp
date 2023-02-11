@@ -23,7 +23,7 @@ void	Harl::_error()
 
 void	Harl::complain(std::string level)
 {
-	void	(Harl::*tab[4])() = { };
+	void	(Harl::*tab[4])();
 	int		index;
 
 	tab[0] = &Harl::_debug;
@@ -41,5 +41,5 @@ void	Harl::complain(std::string level)
 		index = 3;
 	else
 		index = -1;
-	(tab[index]);
+	*(tab[index])();
 }
