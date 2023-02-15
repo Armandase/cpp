@@ -1,7 +1,6 @@
 #include "Fixed.hpp"
 #include <iostream>
 #include <cmath>
-#include <ostream>
 
 const int Fixed::_fract = 8;
 
@@ -14,14 +13,14 @@ Fixed::Fixed()
 Fixed::Fixed(const int param)
 {
 	std::cout << "Int constructor called" << std::endl;
-	_int = param << 8;
+	_int = param << _fract;
+	std::cout << _int << std::endl;
 }
 
 Fixed::Fixed(const float param)
 {
 	std::cout << "Float constructor called" << std::endl;
 	_int = param * (1 << _fract) ;
-	std::cout << "value de _int" << _int / (1 << _fract) << "value fract" << _int * ( << 8) <<std::endl;
 }
 
 Fixed::~Fixed()
@@ -59,5 +58,5 @@ float	Fixed::toFloat(void) const
 
 int	Fixed::toInt(void) const
 {
-	return (roundf(_int));
+	return ((_int >> _fract));
 }
