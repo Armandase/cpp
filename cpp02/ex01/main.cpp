@@ -2,10 +2,6 @@
 #include <ostream>
 #include "Fixed.hpp"
 
-std::ostream	&operator<<(std::ostream &os, Fixed const &fixed){
-	return (os << fixed.getRawBits());
-}
-
 int main( void ) {
 	Fixed a;
 	Fixed const b( 10 );
