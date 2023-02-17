@@ -54,11 +54,21 @@ void	Account::_displayTimestamp(void){
 	time = std::localtime(&t);
 	date << "[";
 	date << (time->tm_year + 1900);
+	if (time->tm_mon + 1 < 10)
+		date << 0;
 	date << (time->tm_mon + 1);
+	if (time->tm_mday < 10)
+		date << 0;
 	date << (time->tm_mday);
 	date << "_";
+	if (time->tm_hour < 10)
+		date << 0;
 	date << (time->tm_hour);
+	if (time->tm_min < 10)
+		date << 0;
 	date << (time->tm_min);
+	if (time->tm_sec < 10)
+		date << 0;
 	date << (time->tm_sec);
 	std::cout << date.str() << "] ";
 }
@@ -88,9 +98,11 @@ void	Account::makeDeposit(int deposit)
 	std::cout << ";p_amount:"<< _amount;
 	std::cout << ";deposit:"<< deposit;
 	_amount += deposit;
-	_nbDeposits ++;
+	_totalAmount += deposit;
+	_nbDeposits++;
+	_totalNbDeposits++;
 	std::cout << ";amount:" << _amount;
-	std::cout << "nb_deposits:"<< _nbDeposits <<std::endl;
+	std::cout << ";nb_deposits:"<< _nbDeposits <<std::endl;
 }
 
 bool	Account::makeWithdrawal(int withdrawal)
@@ -105,7 +117,9 @@ bool	Account::makeWithdrawal(int withdrawal)
 	}
 	std::cout << ";withdrawal:" << withdrawal;
 	_amount -= withdrawal;
+	_totalAmount -= withdrawal;
 	_nbWithdrawals++;
+	_totalNbWithdrawals++;
 	std::cout << ";amount:"<< _amount;
 	std::cout << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
 	return (0);
