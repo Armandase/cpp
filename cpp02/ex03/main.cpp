@@ -1,54 +1,29 @@
 #include <iostream>
 #include <ostream>
-#include "Fixed.hpp"
+#include "Point.hpp"
 
-void	personnal_test()
+bool bsp(Point const a, Point const b, Point const c, Point const point)
 {
-	std::cout << std::endl << "! PERSONNAL TESTS !" << std::endl;
-	Fixed a(5.05f);
-	Fixed b(2);
-	Fixed aa = a;
-	std::cout << "a = " << a << " b = " << b << " aa = " << aa << std::endl;
-	std::cout << "a == b --> bool = " << (a == b) << std::endl;
-	std::cout << "a == aa --> bool = " << (a == aa) << std::endl;
-	std::cout << "a != b --> bool = " << (a != b) << std::endl;
-	std::cout << "a != aa --> bool = " << (a != aa) << std::endl;
-	std::cout << "a > b --> bool = " << (a > b) << std::endl;
-	std::cout << "a > aa --> bool = " << (a > aa) << std::endl;
-	std::cout << "a >= b --> bool = " << (a >= b) << std::endl;
-	std::cout << "a >= aa --> bool = " << (a >= aa) << std::endl;
-	std::cout << "a < b --> bool = " << (a < b) << std::endl;
-	std::cout << "a < aa --> bool = " << (a < aa) << std::endl;
-	std::cout << "a <= b --> bool = " << (a <= b) << std::endl;
-	std::cout << "a <= aa --> bool = " << (a <= aa) << std::endl;
-	std::cout << "a * b --> " << (a * b) << std::endl;
-	std::cout << "a / b --> " << (a / b) << std::endl;
-	std::cout << "a + b --> " << (a + b) << std::endl;
-	std::cout << "a - b --> " << (a - b) << std::endl;
-	std::cout << "before : a++ --> a = " << (a++) << " after a = " << a << std::endl;
-	std::cout << "before : a-- --> a = " << (a--) << " after a = " << a << std::endl;
-	std::cout << "before : ++a --> a = " << a << " after a = " << (++a) << std::endl;
-	std::cout << "before : --a --> a = " << a << " after a = " << (--a) << std::endl;
-	std::cout << "max between a & b --> " << Fixed::max(a, b) << std::endl;
-	std::cout << "min between a & b --> " << Fixed::min(a, b) << std::endl;
-	Fixed const aConst(5.05f);
-	Fixed const bConst(2);
-	std::cout << "max between const a & const b --> " << Fixed::max(a, b) << std::endl;
-	std::cout << "min between const a & const b --> " << Fixed::min(a, b) << std::endl;
+	std::cout << a.getX() << std::endl;
+	Fixed area = (Fixed(0.5f) * (a.getX() * (c.getY() - b.getY()) + c.getX() * (b.getY() - a.getY()) + b.getX() * (a.getY() - c.getY())));
+	Fixed areaABP = (Fixed(0.5f) * (a.getX() * (point.getY() - b.getY()) + point.getX() * (b.getY() - a.getY()) + b.getX() * (a.getY() - point.getY())));
+	Fixed areaAPC = (Fixed(0.5f) * (a.getX() * (c.getY() - point.getY()) + c.getX() * (point.getY() - a.getY()) + point.getX() * (a.getY() - c.getY())));
+	Fixed areaPBC = (Fixed(0.5f) * (point.getX() * (c.getY() - b.getY()) + c.getX() * (b.getY() - point.getY()) + b.getX() * (point.getY() - c.getY())));
+	if (areaABP + areaAPC + areaPBC == area)
+		return (true);
+	else
+		return (false);
+
 }
 
 int main( void ) {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
-	
-	personnal_test();
+	Point	a(2, 4);	
+	Point	b(1, 1);	
+	Point	c(6, 1);	
+	Point	p(1, 3);	
+	if (bsp(a, b, c, p))
+		std::cout << "inside" << std::endl;
+	else
+		std::cout << "outside" << std::endl;
 	return 0;
 }
