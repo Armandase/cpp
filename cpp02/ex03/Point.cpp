@@ -2,14 +2,14 @@
 #include "Fixed.hpp"
 
 Point::Point(void)
-	:	_x(0),
-		_y(0)
+	:	_x(Fixed(0)),
+		_y(Fixed(0))
 {
 }
 
 Point::Point(const float xInit, const float yInit)
-	:	_x(xInit),
-		_y(yInit)
+	:	_x(Fixed(xInit)),
+		_y(Fixed(yInit))
 {
 }
 

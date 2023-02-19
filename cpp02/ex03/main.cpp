@@ -21,6 +21,7 @@ int main( void ) {
 	Point	b(1, 1);	
 	Point	c(6, 1);	
 	Point	p(1, 3);	
+	std::cout << a.getX() << std::endl;
 	if (bsp(a, b, c, p))
 		std::cout << "inside" << std::endl;
 	else
