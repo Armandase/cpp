@@ -7,9 +7,9 @@ Point::Point(void)
 {
 }
 
-Point::Point(const float xInit, const float yInit)
-	:	_x(Fixed(xInit)),
-		_y(Fixed(yInit))
+Point::Point(const float x, const float y)
+	:	_x(Fixed(x)),
+		_y(Fixed(y))
 {
 }
 
@@ -19,7 +19,8 @@ Point::Point(const Point &copy){
 
 Point& Point::operator=(const Point &point)
 {
-	(void)point;
+	this->~Point();
+	new(this) Point(point.getX().toFloat(), point.getY().toFloat());
 	return (*this);
 }
 

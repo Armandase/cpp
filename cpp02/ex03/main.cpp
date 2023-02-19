@@ -1,30 +1,48 @@
 #include <iostream>
+#include <iterator>
 #include <ostream>
 #include "Point.hpp"
 
-bool bsp(Point const a, Point const b, Point const c, Point const point)
-{
-	std::cout << a.getX() << std::endl;
-	Fixed area = (Fixed(0.5f) * (a.getX() * (c.getY() - b.getY()) + c.getX() * (b.getY() - a.getY()) + b.getX() * (a.getY() - c.getY())));
-	Fixed areaABP = (Fixed(0.5f) * (a.getX() * (point.getY() - b.getY()) + point.getX() * (b.getY() - a.getY()) + b.getX() * (a.getY() - point.getY())));
-	Fixed areaAPC = (Fixed(0.5f) * (a.getX() * (c.getY() - point.getY()) + c.getX() * (point.getY() - a.getY()) + point.getX() * (a.getY() - c.getY())));
-	Fixed areaPBC = (Fixed(0.5f) * (point.getX() * (c.getY() - b.getY()) + c.getX() * (b.getY() - point.getY()) + b.getX() * (point.getY() - c.getY())));
-	if (areaABP + areaAPC + areaPBC == area)
-		return (true);
-	else
-		return (false);
-
-}
-
+/*
+    c
+	|\
+	| \
+	|  \
+	|   \
+	|    \
+	|     \
+	|      \  o
+	|       \
+	|  i     \
+	|         \
+   a|__________\b
+*/
 int main( void ) {
-	Point	a(2, 4);	
-	Point	b(1, 1);	
-	Point	c(6, 1);	
-	Point	p(1, 3);	
-	std::cout << a.getX() << std::endl;
-	if (bsp(a, b, c, p))
-		std::cout << "inside" << std::endl;
+	Point	a(0, 0);
+	Point	b(10, 0);
+	Point	c(0, 10);
+	Point	in(2, 3);
+	Point	out(9, 5);
+	Point	edge(5, 5);
+
+	std::cout << "param : " << std::endl;
+	std::cout << "  a(" << a.getX().toInt() << ";" << a.getY().toInt() << ")" << std::endl;
+	std::cout << "  b(" << b.getX().toInt() << ";" << b.getY().toInt() << ")" << std::endl;
+	std::cout << "  c(" << c.getX().toInt() << ";" << c.getY().toInt() << ")\n" << std::endl;
+	std::cout << "  in(" << in.getX().toInt() << ";" << in.getY().toInt() << ")" << std::endl;
+	std::cout << "  out(" << out.getX().toInt() << ";" << out.getY().toInt() << ")" << std::endl;
+	std::cout << "  edge(" << edge.getX().toInt() << ";" << edge.getY().toInt() << ")" << std::endl;
+	if (bsp(a, b, c, in))
+		std::cout << "in is inside the triangle" << std::endl;
 	else
-		std::cout << "outside" << std::endl;
+		std::cout << "in is outside the triangle" << std::endl;
+	if (bsp(a, b, c, out))
+		std::cout << "out is inside the triangle" << std::endl;
+	else
+		std::cout << "out is outside the triangle" << std::endl;
+	if (bsp(a, b, c, edge))
+		std::cout << "edge is inside the triangle" << std::endl;
+	else
+		std::cout << "edge is outside the triangle" << std::endl;
 	return 0;
 }
