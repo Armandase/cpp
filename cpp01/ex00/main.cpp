@@ -10,4 +10,5 @@ int main (void)
 	normies->announce();
 	randomChump("chat");
 	delete normies;
+	return (0);
 }

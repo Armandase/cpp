@@ -1,6 +1,6 @@
 NAME	= fixedPointNumbers
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98 -g
+FLAGS	= -Wall -Wextra -Werror -std=c++98
 SRC		= main.cpp Fixed.cpp
 OBJ		= ${SRC:.cpp=.o}
 

@@ -9,6 +9,7 @@ void	personnal_test()
 	Fixed b(2);
 	Fixed aa = a;
 	std::cout << "a = " << a << " b = " << b << " aa = " << aa << std::endl;
+	std::cout << "---------------------" << std::endl;
 	std::cout << "a == b --> bool = " << (a == b) << std::endl;
 	std::cout << "a == aa --> bool = " << (a == aa) << std::endl;
 	std::cout << "a != b --> bool = " << (a != b) << std::endl;
