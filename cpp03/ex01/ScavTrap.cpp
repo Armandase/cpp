@@ -14,6 +14,19 @@ ScavTrap::~ScavTrap()
 {
 	std::cout << "A ScavTrap will be detroyed." << std::endl;
 }
+
+ScavTrap::ScavTrap(const ScavTrap& copy)
+{
+	ScavTrap::operator=(copy);
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap &scav)
+{
+	this->~ScavTrap();
+	new(this) ScavTrap(scav._name);
+	return (*this);
+}
+
 void	ScavTrap::guardGate(){
 	std::cout << _name << " is now in Gate keeper mode." << std::endl;
 }
