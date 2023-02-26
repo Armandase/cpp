@@ -4,7 +4,7 @@
 FragTrap::FragTrap(std::string name)
 	: ClapTrap(name)
 {
-	std::cout << name <<" is a FragTrap" << std::endl;
+	std::cout << "FragTrap " << name <<" is a FragTrap" << std::endl;
 	_hitPoints = 100;
 	_energyPoints = 100;
 	_attacksDamage = 30;
