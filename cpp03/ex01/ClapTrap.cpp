@@ -9,14 +9,16 @@ ClapTrap::ClapTrap(const ClapTrap& copy){
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& clap){
-	this->~ClapTrap();
-	new(this) ClapTrap(clap._name);
+	_name = clap._name;
+	_energyPoints = clap._energyPoints;
+	_hitPoints = clap._hitPoints;
+	_attacksDamage = clap._attacksDamage;
 	return (*this);
 }
 
 ClapTrap::ClapTrap(std::string name)
 {
-	std::cout << name << " was born." << std::endl;
+	std::cout << "ClapTrap " << name << " was born." << std::endl;
 	_name = name;
 	_hitPoints = 10;
 	_energyPoints = 10;

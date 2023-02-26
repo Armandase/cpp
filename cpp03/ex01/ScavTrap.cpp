@@ -16,14 +16,17 @@ ScavTrap::~ScavTrap()
 }
 
 ScavTrap::ScavTrap(const ScavTrap& copy)
+	: ClapTrap(copy)
 {
 	ScavTrap::operator=(copy);
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap &scav)
 {
-	this->~ScavTrap();
-	new(this) ScavTrap(scav._name);
+	_name = scav._name;
+	_energyPoints = scav._energyPoints;
+	_hitPoints = scav._hitPoints;
+	_attacksDamage = scav._attacksDamage;
 	return (*this);
 }
 
