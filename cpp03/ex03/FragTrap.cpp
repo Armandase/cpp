@@ -14,6 +14,22 @@ FragTrap::~FragTrap()
 {
 	std::cout << "A FragTrap will be detroyed." << std::endl;
 }
+
+FragTrap::FragTrap(const FragTrap& copy)
+	: ClapTrap(copy)
+{
+	FragTrap::operator=(copy);
+}
+
+FragTrap& FragTrap::operator=(const FragTrap &frag)
+{
+	_name = frag._name;
+	_hitPoints = frag._hitPoints;
+	_energyPoints = frag._energyPoints;
+	_attacksDamage = frag._attacksDamage;
+	return (*this);
+}
+
 void	FragTrap::highFivesGuys(){
 	std::cout << _name << " is asking for an high fives !!" << std::endl;
 }
