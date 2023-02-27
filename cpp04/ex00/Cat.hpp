@@ -1,18 +1,17 @@
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
-#include "iostream"
 #include "Animal.hpp"
 
-class Cat : Animal
+class Cat : public Animal
 {
 	 public:
 		Cat();
 		~Cat();
 		Cat(const Cat& copy);
-		Cat& operator=(const Cat &animal);
+		Cat& operator=(const Cat &cat);
 
-		void		makeSound(void);
+		void		makeSound(void) const;
 	 private:
 		std::string	_type;
 };

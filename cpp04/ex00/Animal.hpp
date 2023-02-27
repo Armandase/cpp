@@ -7,12 +7,12 @@ class Animal
 {
 	 public:
 		Animal();
-		~Animal();
+		virtual ~Animal();
 		Animal(const Animal& copy);
 		Animal& operator=(const Animal &animal);
-		std::string getType(void);
-		void		makeSound(void);
-	 private:
+		std::string 	getType(void) const;
+		virtual void	makeSound(void) const;
+	 protected:
 		std::string	_type;
 };
 

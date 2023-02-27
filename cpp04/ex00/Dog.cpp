@@ -15,12 +15,10 @@ Dog::Dog(const Dog& copy){
 }
 
 Dog& Dog::operator = (const Dog &dog){
-	this->~Dog();
-	new(this) Dog();
-	(void)dog;
+	this->_type = dog._type;
 	return (*this);
 }
 
-void	Dog::makeSound(void){
+void	Dog::makeSound(void) const {
 	std::cout << "Grrahou waf waf" << std::endl;
 }

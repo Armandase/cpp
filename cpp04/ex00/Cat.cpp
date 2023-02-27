@@ -14,13 +14,11 @@ Cat::Cat(const Cat& copy){
 	Cat::operator=(copy);
 }
 
-Cat& Cat::operator = (const Cat &dog){
-	this->~Cat();
-	new(this) Cat();
-	(void)dog;
+Cat& Cat::operator = (const Cat &cat){
+	this->_type = cat._type;
 	return (*this);
 }
 
-void	Cat::makeSound(void){
+void	Cat::makeSound(void) const{
 	std::cout << "Ronnnnn miaouuuuuu miaou" << std::endl;
 }
