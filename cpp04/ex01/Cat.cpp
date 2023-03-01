@@ -26,8 +26,7 @@ Cat& Cat::operator = (const Cat &cat){
 	return (*this);
 }
 
-Cat::Cat(std::string idea)
-{
+void	Cat::setIdea(std::string idea){
 	_ideas->addIdea(idea);
 }
 

@@ -1,10 +1,21 @@
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
 
+ScavTrap::ScavTrap()
+	: ClapTrap("anon")
+{
+	std::cout << "ScavTrap anon is a ScavTrap" << std::endl;
+	_name = "anon";
+	_hitPoints = 100;
+	_energyPoints = 50;
+	_attacksDamage = 20;
+}
+
 ScavTrap::ScavTrap(std::string name)
 	: ClapTrap(name)
 {
 	std::cout << "ScavTrap " << name <<" is a ScavTrap" << std::endl;
+	_name = name;
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attacksDamage = 20;

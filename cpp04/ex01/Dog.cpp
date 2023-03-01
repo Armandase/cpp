@@ -16,11 +16,6 @@ Dog::~Dog(){
 	delete _ideas;
 }
 
-Dog::Dog(std::string idea)
-{
-	_ideas->addIdea(idea);
-}
-
 Dog::Dog(const Dog& copy)
 	:	Animal(copy)
 {
@@ -34,4 +29,8 @@ Dog& Dog::operator = (const Dog &dog){
 
 void	Dog::makeSound(void) const {
 	std::cout << "Grrahou waf waf" << std::endl;
+}
+
+void	Dog::setIdea(std::string idea){
+	_ideas->addIdea(idea);
 }

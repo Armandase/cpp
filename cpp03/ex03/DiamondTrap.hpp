@@ -8,6 +8,7 @@
 class DiamondTrap : virtual public ScavTrap, virtual public FragTrap{
 
 public:
+	DiamondTrap();
 	~DiamondTrap();
 	DiamondTrap(std::string name);
 	DiamondTrap(const DiamondTrap& copy);

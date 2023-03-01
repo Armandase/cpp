@@ -7,6 +7,18 @@ DiamondTrap::~DiamondTrap(){
 	std::cout << "DiamondTrap " << _name << " pass away." << std::endl;
 }
 
+DiamondTrap::DiamondTrap()
+	:	ClapTrap("anon"),
+		ScavTrap("anon"),
+		FragTrap("anon")
+{
+	_name = "anon";
+	_attacksDamage = 30;
+	_energyPoints = 50;
+	_hitPoints = 100;
+	ClapTrap::_name += "_clap_name";
+}
+
 DiamondTrap::DiamondTrap(std::string name)
 	:	ClapTrap(name),
 		ScavTrap(name),
@@ -24,7 +36,6 @@ DiamondTrap::DiamondTrap(const DiamondTrap& copy)
 		ScavTrap(copy),
 		FragTrap(copy)
 {
-	ClapTrap::_name = copy._name + "_clap_name";
 	DiamondTrap::operator=(copy);
 }
 
@@ -33,7 +44,6 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap &diamond){
 	_attacksDamage = diamond._attacksDamage;
 	_energyPoints = diamond._energyPoints;
 	_hitPoints = diamond._hitPoints;
-	ClapTrap::_name = diamond._name + "_clap_name";
 	return (*this);
 }
 

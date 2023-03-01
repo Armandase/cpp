@@ -5,6 +5,17 @@ ScavTrap::ScavTrap(std::string name)
 	: ClapTrap(name)
 {
 	std::cout << "Scavtrap " << name <<" is a ScavTrap" << std::endl;
+	_name = name;
+	_hitPoints = 100;
+	_energyPoints = 50;
+	_attacksDamage = 20;
+}
+
+ScavTrap::ScavTrap()
+	: ClapTrap("anon")
+{
+	std::cout << "Scavtrap anon is a ScavTrap" << std::endl;
+	_name = "anon";
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attacksDamage = 20;
