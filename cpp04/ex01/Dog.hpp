@@ -11,11 +11,12 @@ class Dog : public Animal
 		~Dog();
 		Dog(const Dog& copy);
 		Dog& operator=(const Dog &animal);
+		Dog(std::string idea);
 
 		void		makeSound(void)const;
 	 private:
 		std::string	_type;
-		Brain	*ideas;
+		Brain	*_ideas;
 };
 
 #endif

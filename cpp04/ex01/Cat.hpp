@@ -11,10 +11,11 @@ class Cat : public Animal
 		~Cat();
 		Cat(const Cat& copy);
 		Cat& operator=(const Cat &cat);
+		Cat(std::string idea);
 
 		void		makeSound(void) const;
 	 private:
-		Brain	*ideas;
+		Brain	*_ideas;
 		std::string	_type;
 };
 

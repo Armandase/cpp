@@ -6,15 +6,16 @@
 
 int main()
 {
+	{
 	std::cout << "Main from the subject" << std::endl;
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
-	int	n = 10;
 	
 
 	delete j;
 	delete i;
-
+	}/*
+	int	n = 10;
 	std::cout << "Main from the subject" << std::endl;
 	Animal* b = new Animal[n]();
 
@@ -24,6 +25,6 @@ int main()
 		} else {
 			b[i] = Cat();
 		}
-	}
+	}*/
 	return 0;
 }

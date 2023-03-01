@@ -7,7 +7,7 @@ Brain::Brain()
 	}	
 }
 
-Brain::Brain(std::string idea)
+void	Brain::addIdea(std::string idea)
 {
 	int	i = 0;
 
@@ -17,7 +17,7 @@ Brain::Brain(std::string idea)
 	if (i < 100){
 		_ideas[i] = idea;
 	} else {
-		std::cout << "To manyu ideas" << std::endl;
+		std::cout << "To many ideas" << std::endl;
 	}
 }
 
@@ -30,6 +30,8 @@ Brain::Brain(const Brain& copy){
 }
 
 Brain& Brain::operator = (const Brain &brain){
-	this->_ideas 
+	for (int i = 0; i < 100; i++){
+		this->_ideas[i] = brain._ideas[i]; 
+	}
 	return (*this);
 }

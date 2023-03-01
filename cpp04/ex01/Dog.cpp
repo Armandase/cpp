@@ -1,5 +1,6 @@
 #include "Dog.hpp"
 #include "Animal.hpp"
+#include "Brain.hpp"
 #include "iostream"
 
 Dog::Dog()
@@ -7,10 +8,17 @@ Dog::Dog()
 {
 	std::cout << "Dog constructor call" << std::endl;
 	_type = "Dog";
+	_ideas = new Brain;
 }
 
 Dog::~Dog(){
 	std::cout << "Dog destructor call" << std::endl;
+	delete _ideas;
+}
+
+Dog::Dog(std::string idea)
+{
+	_ideas->addIdea(idea);
 }
 
 Dog::Dog(const Dog& copy)

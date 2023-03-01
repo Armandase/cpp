@@ -6,10 +6,10 @@
 class Brain{
 public:
 	Brain();
-	Brain(std::string idea);
 	~Brain();
 	Brain(const Brain& copy);
 	Brain& operator = (const Brain &brain);
+	void addIdea(std::string idea);
 protected:
 	std::string _ideas[100];	
 };
