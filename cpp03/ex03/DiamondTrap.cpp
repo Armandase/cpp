@@ -24,6 +24,7 @@ DiamondTrap::DiamondTrap(const DiamondTrap& copy)
 		ScavTrap(copy),
 		FragTrap(copy)
 {
+	ClapTrap::_name = copy._name + "_clap_name";
 	DiamondTrap::operator=(copy);
 }
 
@@ -32,6 +33,7 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap &diamond){
 	_attacksDamage = diamond._attacksDamage;
 	_energyPoints = diamond._energyPoints;
 	_hitPoints = diamond._hitPoints;
+	ClapTrap::_name = diamond._name + "_clap_name";
 	return (*this);
 }
 

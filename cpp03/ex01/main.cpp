@@ -2,11 +2,13 @@
 #include "ScavTrap.hpp"
 
 int main(void){
-	std::cout << "initialisation" << std::endl;
+	std::cout << "initialisation : " << std::endl;
 	ScavTrap patissier("Edouard");
-	ScavTrap boulanger(patissier);
-
-	std::cout << "\npatissier" << std::endl;
+	{
+		std::cout << "copy : " << std::endl;
+		ScavTrap boulanger(patissier);
+	}
+	std::cout << "\npatissier : " << std::endl;
 	patissier.takeDamage(10);
 	patissier.takeDamage(10);
 	patissier.beRepaired(10);

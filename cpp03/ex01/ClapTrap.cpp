@@ -1,7 +1,7 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::~ClapTrap(){
-	std::cout << _name << " pass away." << std::endl;
+	std::cout << "ClapTrap " << _name << " pass away." << std::endl;
 };
 
 ClapTrap::ClapTrap(const ClapTrap& copy){

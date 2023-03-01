@@ -4,7 +4,7 @@
 ScavTrap::ScavTrap(std::string name)
 	: ClapTrap(name)
 {
-	std::cout << name <<" is a ScavTrap" << std::endl;
+	std::cout << "ScavTrap " << name <<" is a ScavTrap" << std::endl;
 	_hitPoints = 100;
 	_energyPoints = 50;
 	_attacksDamage = 20;
@@ -12,7 +12,7 @@ ScavTrap::ScavTrap(std::string name)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "A ScavTrap will be detroyed." << std::endl;
+	std::cout << "ScavTrap will be detroyed." << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& copy)
@@ -31,7 +31,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &scav)
 }
 
 void	ScavTrap::guardGate(){
-	std::cout << _name << " is now in Gate keeper mode." << std::endl;
+	std::cout << "ScavTrap " << _name << " is now in Gate keeper mode." << std::endl;
 }
 
 void	ScavTrap::attack(const std::string& target)

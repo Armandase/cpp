@@ -12,8 +12,27 @@ FragTrap::FragTrap(std::string name)
 
 FragTrap::~FragTrap()
 {
-	std::cout << "A FragTrap will be detroyed." << std::endl;
+	std::cout << "FragTrap "<< _name << " will be detroyed." << std::endl;
 }
+
+
+FragTrap::FragTrap(const FragTrap& copy)
+	: ClapTrap(copy)
+{
+	std::cout << "FragTrap " << copy._name <<" has been copied into " << _name << std::endl;
+	FragTrap::operator=(copy);
+}
+
+FragTrap& FragTrap::operator=(const FragTrap &frag)
+{
+	std::cout << "FragTrap " << _name <<" is now equal to " << frag._name << std::endl;
+	this->_name = frag._name;
+	this->_attacksDamage = frag._attacksDamage;
+	this->_energyPoints = frag._energyPoints;
+	this->_hitPoints = frag._hitPoints;
+	return (*this);
+}
+
 void	FragTrap::highFivesGuys(){
 	std::cout << _name << " is asking for an high fives !!" << std::endl;
 }

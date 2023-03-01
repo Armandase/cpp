@@ -5,19 +5,24 @@
 
 int main(void){
 	std::cout << "initialisation" << std::endl;
-	DiamondTrap fermier("Emile");
-
-	std::cout << "\nfermier (FragTrap)" << std::endl;
-	fermier.takeDamage(10);
-	fermier.takeDamage(10);
-	fermier.beRepaired(10);
-	for (int i = 0; i < 9; i++){
-		fermier.attack("orge");
+	DiamondTrap arbre("Sapin");
+	{
+		std::cout << "copy : "<< std::endl;
+		DiamondTrap plante("tout");
+		plante = arbre;
 	}
-	fermier.attack("orge");
-	fermier.beRepaired(10);
-	fermier.takeDamage(2);
-	fermier.takeDamage(1000);
-	fermier.whoAmI();
+
+	std::cout << "\narbre (DiamondTrap)" << std::endl;
+	arbre.takeDamage(10);
+	arbre.takeDamage(10);
+	arbre.beRepaired(10);
+	for (int i = 0; i < 9; i++){
+		arbre.attack("chene");
+	}
+	arbre.attack("chene");
+	arbre.beRepaired(10);
+	arbre.takeDamage(2);
+	arbre.takeDamage(1000);
+	arbre.whoAmI();
 	return (0);
 }

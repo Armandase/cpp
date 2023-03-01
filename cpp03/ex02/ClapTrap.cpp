@@ -9,8 +9,10 @@ ClapTrap::ClapTrap(const ClapTrap& copy){
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& clap){
-	this->~ClapTrap();
-	new(this) ClapTrap(clap._name);
+	this->_name = clap._name;
+	this->_attacksDamage = clap._attacksDamage;
+	this->_energyPoints = clap._energyPoints;
+	this->_hitPoints = clap._hitPoints;
 	return (*this);
 }
 
