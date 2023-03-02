@@ -17,7 +17,7 @@ void	Brain::addIdea(std::string idea)
 	if (i < 100){
 		_ideas[i] = idea;
 	} else {
-		std::cout << "To many ideas" << std::endl;
+		std::cout << "Too many ideas" << std::endl;
 	}
 }
 
@@ -34,4 +34,13 @@ Brain& Brain::operator = (const Brain &brain){
 		this->_ideas[i] = brain._ideas[i]; 
 	}
 	return (*this);
+}
+
+void	Brain::printIdeas()
+{
+	for (int i = 0; i < 100; i++){
+		if (_ideas[i] != "\0"){
+			std::cout << _ideas[i] << std::endl;
+		}
+	}
 }

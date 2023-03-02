@@ -34,3 +34,7 @@ void	Dog::makeSound(void) const {
 void	Dog::setIdea(std::string idea){
 	_ideas->addIdea(idea);
 }
+
+void	Dog::getIdeas(){
+	_ideas->printIdeas();
+}

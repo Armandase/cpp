@@ -9,7 +9,8 @@ public:
 	~Brain();
 	Brain(const Brain& copy);
 	Brain& operator = (const Brain &brain);
-	void addIdea(std::string idea);
+	void	addIdea(std::string idea);
+	void	printIdeas();
 protected:
 	std::string _ideas[100];	
 };
