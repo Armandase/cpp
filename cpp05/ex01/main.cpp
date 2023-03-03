@@ -1,13 +1,16 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main ()
 {
 	{
-		Bureaucrat humain("tube", 24);
-		Bureaucrat b(humain);
+		Bureaucrat	humain("Brian", 24);
+		Form		papier("contravention", false, 50, 25);
 
 		std::cout << humain << std::endl;
-		std::cout << b << std::endl;
+		std::cout << papier << std::endl;
+		papier.beSigned(humain);
+		std::cout << papier << std::endl;
 	}
 	{
 		Bureaucrat herbe("hibou", 2);

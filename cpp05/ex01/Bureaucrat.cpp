@@ -72,3 +72,11 @@ void	Bureaucrat::decrementGrade(){
 		std::cout << e.what() << std::endl;
 	}
 }
+
+void	Bureaucrat::signForm(bool isSinged){
+	if (isSinged){
+		std::cout << getName() << " signed ";
+	} else {
+		std::cout << getName() << " couldn't sign " ;
+	}
+}
