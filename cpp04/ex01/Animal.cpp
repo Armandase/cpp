@@ -20,9 +20,7 @@ Animal::Animal(const Animal& copy){
 }
 
 Animal& Animal::operator = (const Animal &animal){
-	this->~Animal();
-	new(this) Animal();
-	(void)animal;
+	_type = animal._type;
 	return (*this);
 }
 

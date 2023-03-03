@@ -20,9 +20,7 @@ WrongAnimal::WrongAnimal(const WrongAnimal& copy){
 }
 
 WrongAnimal& WrongAnimal::operator = (const WrongAnimal &animal){
-	this->~WrongAnimal();
-	new(this) WrongAnimal();
-	(void)animal;
+	_type = animal._type;
 	return (*this);
 }
 

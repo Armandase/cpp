@@ -1,10 +1,10 @@
 #include "Dog.hpp"
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 #include "iostream"
 
 Dog::Dog()
-	:	Animal("Dog")
+	:	AAnimal("Dog")
 {
 	std::cout << "Dog constructor call" << std::endl;
 	_type = "Dog";
@@ -17,7 +17,7 @@ Dog::~Dog(){
 }
 
 Dog::Dog(const Dog& copy)
-	:	Animal(copy)
+	:	AAnimal(copy)
 {
 	Dog::operator=(copy);
 }

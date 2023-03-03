@@ -1,9 +1,9 @@
 #include "Cat.hpp"
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "iostream"
 
 Cat::Cat()
-	:	Animal("Cat")
+	:	AAnimal("Cat")
 {
 	std::cout << "Cat constructor call" << std::endl;
 	_type = "Cat";
@@ -16,7 +16,7 @@ Cat::~Cat(){
 }
 
 Cat::Cat(const Cat& copy)
-	:	Animal(copy)
+	:	AAnimal(copy)
 {
 	Cat::operator=(copy);
 }
