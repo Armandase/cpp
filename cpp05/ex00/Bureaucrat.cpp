@@ -5,31 +5,32 @@
 Bureaucrat::Bureaucrat(){
 }
 
-Bureaucrat::~Bureaucrat(){
+Bureaucrat::~Bureaucrat() throw(){
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy){
+	Bureaucrat::operator=(copy);
 }
 
-Bureaucrat & Bureaucrat::operator=(const Bureaucrat &copy){
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat &copy)
+{
+	this->~Bureaucrat();
+	new(this) Bureaucrat(copy._name, copy._grade);
+	return (*this);
 }
 
-Bureaucrat::GradeTooLowExecption{
-
-}
-
-Bureaucrat::Bureaucrat(std::string name, int grade){
+Bureaucrat::Bureaucrat(std::string name, int grade)
+	:	_name(name)
+{
 	try {
 		if (grade < 1){
-			throw std::exception_ptr(Bureaucrat::GradeTooLowExecption);
+			throw std::exception(Bureaucrat::GradeTooLowExecption);
 		} else if (grade > 150){
-			throw std::exception_ptr(Bureaucrat::GradeTooHighExecption);
+			throw std::exception(Bureaucrat::GradeTooHighExecption);
 		} else {
 			_grade = grade;
-			_name = name;
 		}
 	} catch (std::exception & e) {
-	statements
 	}
 }
 
@@ -42,6 +43,6 @@ std::string	Bureaucrat::getName(){
 }
 
 std::ostream &operator << (std::ostream& os, const Bureaucrat& crat){
-	os << Bureaucrat::getName() << ", bureaucrat grade " << Bureaucrat::getGrade() ".";
+	os << crat.getName() << ", bureaucrat grade " << crat.getGrade() ".";
 	return (os);
 }
