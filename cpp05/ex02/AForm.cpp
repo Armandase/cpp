@@ -1,8 +1,8 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include <exception>
 
-Form::Form()
+AForm::AForm()
 	:	_name("random"),
 		_toExecute(150),
 		_toSign(150)
@@ -10,7 +10,7 @@ Form::Form()
 	_signed = false;
 }
 
-Form::Form(std::string name, bool isSigned, int toExecute, int toSign)
+AForm::AForm(std::string name, bool isSigned, int toExecute, int toSign)
 	:	_name(name),
 		_toExecute(toExecute),
 		_toSign(toSign)
@@ -18,10 +18,10 @@ Form::Form(std::string name, bool isSigned, int toExecute, int toSign)
 	_signed = isSigned;
 }
 
-Form::~Form(){
+AForm::~AForm(){
 }
 
-Form::Form(const Form &copy)
+AForm::AForm(const AForm &copy)
 	:	_name(copy.getName()),
 		_toExecute(copy.getToExecute()),
 		_toSign(copy.getToSign())
@@ -29,38 +29,59 @@ Form::Form(const Form &copy)
 	_signed = copy.getSigned();
 }
 
-Form & Form::operator=(const Form &copy){
-	this->~Form();
-	new(this) Form(copy._name, copy._signed, copy._toExecute, copy._toSign);
+AForm & AForm::operator=(const AForm &copy){
+	_signed = copy._signed;
 	return (*this);
 }
 
-bool	Form::getSigned() const {
+bool	AForm::getSigned() const {
 	return (_signed);
 }
 
-std::string Form::getName() const {
+void	AForm::setSigned(bool action){
+	_signed = action;
+}
+
+std::string AForm::getName() const {
 	return (_name);
 }
 
-int	Form::getToSign() const {
+int	AForm::getToSign() const {
 	return (_toSign);
 }
 
-int Form::getToExecute() const {
+int AForm::getToExecute() const {
 	return (_toExecute);
 }
 
-std::ostream& operator << (std::ostream& os, const Form& form){
+std::ostream& operator << (std::ostream& os, const AForm& form){
 	os << "Name: " << form.getName() << " Signed: " << form.getSigned();
 	os << " Grade to sign: " << form.getToSign() << " Grade to execute: " << form.getToExecute();
 	return (os);
 }
 
-void	Form::beSigned(Bureaucrat crat){
+void	AForm::beSigned(Bureaucrat crat){
 	if (!_signed && crat.getGrade() < _toSign){
 		_signed = true;
 	}
 	else
-		throw Form::GradeTooLowExecption();
+		throw AForm::GradeTooLowExecption();
+}
+
+bool	check_form(Bureaucrat const & executor, AForm const & form){
+	if (form.getSigned() && executor.getGrade() < form.getToExecute()){
+		return true;
+	}
+	return false;
+}
+
+void	AForm::execute(Bureaucrat const & executor) const{
+	if (check_form(executor, *this)){
+		this->launchForm();
+	} else if (!getSigned()){
+		AForm::NotSigned();
+	}
+	else{
+		throw AForm::GradeTooLowExecption();
+	}
 }

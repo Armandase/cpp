@@ -1,13 +1,15 @@
 #include "ShrubberyCreationForm.hpp"
+#include "Bureaucrat.hpp"
+#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm()
-	:	Aform("ShrubberyCreation", false, 137, 147)
+	:	AForm("ShrubberyCreation", false, 137, 147)
 {
 	_target = "random";
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
-	:	Aform("ShrubberyCreation", false, 137, 147)
+	:	AForm("ShrubberyCreation", false, 137, 147)
 {
 	_target = target;
 }
@@ -16,15 +18,33 @@ ShrubberyCreationForm::~ShrubberyCreationForm(){
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy)
-	:	Form::Form(copy)
+	:	AForm::AForm(copy)
 {
-	_target = copy.target;
+	_target = copy._target;
 }
 
-ShrubberyCreationForm & ShrubberyCreationForm::operator=(const ShrubberyCreationForm &copy)
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& copy)
 {
-
+	AForm::operator=(copy);
+	_target = copy._target;
+	return (*this);
 }
 
+void	ShrubberyCreationForm::beSigned(Bureaucrat crat){
+	if (!AForm::getSigned() && crat.getGrade() < AForm::getToSign()){
+		AForm::setSigned(true);
+	}
+	else{
+		throw AForm::GradeTooLowExecption();
+	}
+}
 
+void	ShrubberyCreationForm::launchForm() const{
+	std::string fileName = _target + "_shrubbery";
+	std::string tree;
+	std::ofstream outfile(fileName.c_str());
 
+	tree = "   @\n  @@@\n @@@@@\n@@@@@@@\n   @\n   @\n";
+	outfile << tree  << "\n" << tree << "\n" << tree;
+	outfile.close();
+}

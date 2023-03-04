@@ -74,7 +74,7 @@ void	Bureaucrat::decrementGrade(){
 	}
 }
 
-void	Bureaucrat::signForm(Form *form){
+void	Bureaucrat::signForm(AForm *form){
 	try {
 		if (form->getSigned())
 			std::cout << form->getName() << " is already signed." << std::endl;
@@ -84,5 +84,13 @@ void	Bureaucrat::signForm(Form *form){
 		}
 	} catch (std::exception & e) {
 		std::cout << getName() << " couldn't sign " << form->getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const & form){
+	try {
+		form.execute(*this);
+	} catch (std::exception & e) {
+		std::cout << getName() << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
