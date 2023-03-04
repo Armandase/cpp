@@ -10,6 +10,10 @@ int main()
 {
 	int	n = 4;
 	AAnimal* b[4];
+	/*
+	This does not work because it is an abstract class :
+	AAnimal licorne;
+	*/
 	std::cout << "creation : " << std::endl;
 	for (int i = 0; i < n; i++)
 	{
@@ -28,9 +32,14 @@ int main()
 			((Dog*)b[0])->setIdea("thinking");
 	}
 	((Dog*)b[0])->getIdeas();
+
+	std::cout << std::endl;
+
+	((Cat*)b[n / 2 + 1])->setIdea("MIAOU");
+	((Cat*)b[n / 2 + 1])->getIdeas();
 	
 	std::cout << "\ndestruction : " << std::endl;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < n; i++)
 		delete b[i];
 	std::cout << "destruction done" << std::endl;
 	return 0;

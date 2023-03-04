@@ -15,6 +15,7 @@ class Cat : public Animal
 
 		void		makeSound(void) const;
 		void		setIdea(std::string idea);
+		void		getIdeas();
 	 private:
 		Brain	*_ideas;
 		std::string	_type;

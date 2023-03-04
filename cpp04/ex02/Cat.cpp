@@ -30,6 +30,10 @@ void	Cat::setIdea(std::string idea){
 	_ideas->addIdea(idea);
 }
 
+void	Cat::getIdeas(){
+	_ideas->printIdeas();
+}
+
 void	Cat::makeSound(void) const{
 	std::cout << "Ronnnnn miaouuuuuu miaou" << std::endl;
 }

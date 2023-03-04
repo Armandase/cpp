@@ -15,9 +15,9 @@ int main()
 
 		delete j;
 		delete i;
+		std::cout << std::endl;
 	}
 
-	std::cout << "\nMain from the subject" << std::endl;
 	int	n = 4;
 	Animal* b[4];
 	std::cout << "creation : " << std::endl;
@@ -38,9 +38,13 @@ int main()
 			((Dog*)b[0])->setIdea("thinking");
 	}
 	((Dog*)b[0])->getIdeas();
+	std::cout << std::endl;
+	((Cat*)b[n / 2 + 1])->getIdeas();
+	((Cat*)b[n / 2 + 1])->setIdea("miaou");
+	((Cat*)b[n / 2 + 1])->getIdeas();
 	
 	std::cout << "\ndestruction : " << std::endl;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < n; i++)
 		delete b[i];
 	std::cout << "destruction done" << std::endl;
 	return 0;

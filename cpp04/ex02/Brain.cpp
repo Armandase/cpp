@@ -2,6 +2,7 @@
 
 Brain::Brain()
 {
+	std::cout << "Brain constructor call" << std::endl;
 	for (int i = 0; i < 100; i++){
 		_ideas[i].assign("\0");
 	}	

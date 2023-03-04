@@ -33,3 +33,7 @@ void	Cat::setIdea(std::string idea){
 void	Cat::makeSound(void) const{
 	std::cout << "Ronnnnn miaouuuuuu miaou" << std::endl;
 }
+
+void	Cat::getIdeas(){
+	_ideas->printIdeas();
+}

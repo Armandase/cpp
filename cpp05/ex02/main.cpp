@@ -1,29 +1,29 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 int main ()
 {
 	{
 		std::cout << "Permisson ok" << std::endl;
 		Bureaucrat	humain("Brian", 24);
-		Form		papier("contravention", false, 50, 25);
+		AForm		papier("contravention", false, 50, 25);
 
 		std::cout << humain << std::endl;
 		std::cout << papier << std::endl;
-		humain.signForm(&papier);
+		humain.signAForm(&papier);
 		std::cout << papier << std::endl;
-		humain.signForm(&papier);
+		humain.signAForm(&papier);
 		std::cout << papier << std::endl;
 		std::cout << std::endl;
 	}
 	{
 		std::cout << "Permisson denied for bureacrat" << std::endl;
 		Bureaucrat	humain("Brian", 120);
-		Form		papier("contravention", false, 50, 25);
+		AForm		papier("contravention", false, 50, 25);
 
 		std::cout << humain << std::endl;
 		std::cout << papier << std::endl;
-		humain.signForm(&papier);
+		humain.signAForm(&papier);
 		std::cout << papier << std::endl;
 		std::cout << std::endl;
 	}
@@ -32,15 +32,15 @@ int main ()
 		Bureaucrat	*humain;
 		humain = new Bureaucrat();
 		Bureaucrat	parquet = *humain;
-		Form		*papier;
-		papier = new Form();
-		Form journal = *papier;
+		AForm		*papier;
+		papier = new AForm();
+		AForm journal = *papier;
 
 		std::cout << *humain << std::endl;
 		std::cout << parquet << std::endl;
 		std::cout << *papier << std::endl;
 		std::cout << journal << std::endl;
-		humain->signForm(papier);
+		humain->signAForm(papier);
 		std::cout << *papier << std::endl;
 		std::cout << journal << std::endl;
 		delete papier;
