@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include <exception>
 #include <ostream>
 #include <stdexcept>
 
@@ -73,10 +74,13 @@ void	Bureaucrat::decrementGrade(){
 	}
 }
 
-void	Bureaucrat::signForm(bool isSinged){
-	if (isSinged){
-		std::cout << getName() << " signed ";
-	} else {
-		std::cout << getName() << " couldn't sign " ;
+void	Bureaucrat::signForm(Form form){
+	try {
+		form.beSigned(*this);
+		std::cout << getName() << " signed " << form.getName() << std::endl;
+	} catch (std::exception & e) {
+		std::cout << getName() << " couldn't sign " << form.getName() << " because ";
+		e.what();
+		std::cout << std::endl;
 	}
 }

@@ -1,6 +1,6 @@
 NAME	= bureaucrat
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+FLAGS	= -Wall -Wextra -Werror -std=c++98 -g
 SRC		= main.cpp Form.cpp Bureaucrat.cpp
 OBJ		= ${SRC:.cpp=.o}
 

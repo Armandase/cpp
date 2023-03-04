@@ -54,24 +54,13 @@ int Form::getToExecute() const {
 std::ostream& operator << (std::ostream& os, const Form& form){
 	os << "Name: " << form.getName() << " signed: " << form.getSigned();
 	os << " grade to sign: " << form.getToSign() << " grade to execute: " << form.getToExecute();
-	os << std::endl;
 	return (os);
 }
 
 void	Form::beSigned(Bureaucrat crat){
-	try {
-		if (crat.getGrade() > getToSign()){
-			throw Form::GradeTooLowExecption();
-		}
-		else
-		{
-			crat.signForm(true);
-			_signed = true;
-		}
-	} catch (std::exception & e) {
-		crat.signForm(false);
-		std::cout << getName() << " because ";
-		e.what();
-		std::cout << std::endl;
+	if (!_signed && crat.getGrade() < getToSign()){
+		_signed = true;
 	}
+	else
+		throw Form::GradeTooLowExecption();
 }
