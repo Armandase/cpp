@@ -9,8 +9,8 @@ int main ()
 
 		std::cout << humain << std::endl;
 		std::cout << papier << std::endl;
-		papier.beSigned(humain);
-		papier.beSigned(humain);
+		humain.signForm(papier);
+		humain.signForm(papier);
 		std::cout << papier << std::endl;
 	}
 	{
