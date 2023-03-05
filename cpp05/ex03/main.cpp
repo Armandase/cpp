@@ -3,6 +3,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 void	Shrubbery()
 {
@@ -99,7 +100,20 @@ void	Presidential()
 
 int main ()
 {
-	Shrubbery();
-	Robotomy();
-	Presidential();
+	//Shrubbery();
+	//Robotomy();
+	//Presidential();
+	{
+		Intern someRandomIntern;
+		AForm* rrf;
+		Bureaucrat	humain("Brian", 24);
+		
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		if (rrf)
+		{
+			humain.signForm(rrf);
+			humain.executeForm(*rrf);
+		}
+		delete rrf;
+	}	
 }
