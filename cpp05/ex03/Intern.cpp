@@ -32,15 +32,14 @@ AForm*	Intern::makeForm(std::string name, std::string target){
 			index = i;
 		}
 	}
+	for (int i = 0; i < 3; i++){
+		if (i == index)
+			continue ;
+		delete forms[i];
+	}
 	if (index == -1){
 		std::cout << name << " isn't a valid form." << std::endl;
 		return (NULL);
-	} else{
-		for (int i = 0; i < 3; i++){
-			if (i == index)
-				continue ;
-			delete forms[i];
-		}
-		return (forms[index]);
 	}
+	return (forms[index]);
 }
