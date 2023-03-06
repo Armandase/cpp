@@ -1,7 +1,7 @@
-NAME	= forms
+NAME	= conversionOfScalarTypes
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98 -g
-SRC		= main.cpp AForm.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+FLAGS	= -Wall -Wextra -Werror -std=c++98
+SRC		= main.cpp
 OBJ		= ${SRC:.cpp=.o}
 
 all: ${NAME}
