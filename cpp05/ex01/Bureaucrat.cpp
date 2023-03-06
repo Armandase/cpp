@@ -28,9 +28,9 @@ Bureaucrat::Bureaucrat(std::string name, int grade)
 {
 	try {
 		if (grade < 1){
-			throw Bureaucrat::GradeTooLowExecption();
-		} else if (grade > 150){
 			throw Bureaucrat::GradeTooHighExecption();
+		} else if (grade > 150){
+			throw Bureaucrat::GradeTooLowExecption();
 		} else {
 			_grade = grade;
 		}
