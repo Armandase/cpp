@@ -8,13 +8,21 @@ class ScalarConverter
 		~ScalarConverter();
 		ScalarConverter (const ScalarConverter &copy);
 		ScalarConverter &operator=(const ScalarConverter&);
+		ScalarConverter(char *str);
+
 		void	convert(char *toConvert);
 	 private:
-		char	_c;
-		int		_i;
-		float	_f;
-		double	_d;
-		
+		int		findType(char *str);
+		bool	isChar(char *str);
+		bool	isInt(char *str);
+		bool	isFloat(char *str);
+		bool	isDouble(char *str);
+		enum{
+			_c,
+			_i,
+			_f,
+			_d
+		};
 };
 
 #endif
