@@ -17,12 +17,10 @@ class ScalarConverter
 		bool	isInt(char *str);
 		bool	isFloat(char *str);
 		bool	isDouble(char *str);
-		enum{
-			_c,
-			_i,
-			_f,
-			_d
-		};
+		char	_c;
+		int		_i;
+		float	_f;
+		double	_d;
 };
 
 #endif
