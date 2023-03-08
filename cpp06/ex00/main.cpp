@@ -14,5 +14,7 @@ int	main(int ac, char **av)
 
 	ScalarConverter	convert(av[1]);
 
+	convert.print();
+
 	return (0);
 }
