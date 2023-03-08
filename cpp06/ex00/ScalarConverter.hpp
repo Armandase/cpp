@@ -13,8 +13,8 @@ class ScalarConverter
 		void	convert(char *toConvert);
 	 private:
 		int		findType(char *str);
-		bool	isChar(char *str);
-		bool	isInt(char *str);
+		void	isChar(char *str);
+		void	isInt(char *str);
 		bool	isFloat(char *str);
 		bool	isDouble(char *str);
 		char	_c;
