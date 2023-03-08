@@ -1,6 +1,9 @@
 #ifndef SERIALIZER_HPP
 #define SERIALIZER_HPP
 
+#include <stdint.h>
+#include "data.hpp"
+
 class Serializer
 {
 	 public:
@@ -8,24 +11,9 @@ class Serializer
 		~Serializer();
 		Serializer (const Serializer &copy);
 		Serializer &operator=(const Serializer&);
-	 private:
-		
+
+		uintptr_t serialize(Data* ptr);
+		Data*	deserialize(uintptr_t raw);
 };
-
-
-//A deplacer dans Serializer.cpp
-Serializer::Serializer(){
-}
-
-Serializer::~Serializer(){
-}
-
-Serializer::Serializer(const Serializer &copy){
-}
-
-Serializer & Serializer::operator=(const Serializer &copy){
-}
-
-
 
 #endif

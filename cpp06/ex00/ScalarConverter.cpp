@@ -23,7 +23,12 @@ ScalarConverter::ScalarConverter(const ScalarConverter &copy){
 }
 
 ScalarConverter & ScalarConverter::operator=(const ScalarConverter &copy){
-	(void)copy;
+	_c = copy._c;
+	_d = copy._d;
+	_f = copy._f;
+	_i = copy._i;
+	_special = copy._special;
+	_str = copy._str;
 	return (*this);
 }
 
