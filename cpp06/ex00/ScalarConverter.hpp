@@ -12,7 +12,7 @@ class ScalarConverter
 		ScalarConverter &operator=(const ScalarConverter&);
 		ScalarConverter(char *str);
 
-		void	print();
+		static void	print(ScalarConverter &ref);
 	 private:
 		std::string	_str;
 		int		findType(char *str);

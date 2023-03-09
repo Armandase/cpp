@@ -1,9 +1,10 @@
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
-template<typename T>
 #include <exception>
 
+
+template <typename T>
 class Array
 {
 	 public:
@@ -12,11 +13,11 @@ class Array
 		~Array();
 		Array (const Array &copy);
 		Array &operator=(const Array&);
-		Array &operator[](unsigned int i);
+		T& operator[](unsigned int i);
 		class OutOfArray : public std::exception
 		{
 			virtual const char * what() const throw(){
-				return ("You can't acces at this memory");
+				return ("You can't access at this memory");
 			}
 		};
 		unsigned int size(void);

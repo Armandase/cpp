@@ -1,30 +1,45 @@
 #include "Array.hpp"
 
-Array::Array(){
-	_array = new T();
+template <typename T>
+Array<T>::Array(){
+	_array = new T;
+	_len = 0;
 }
 
-Array::Array(unsigned int n){
-	_array = new T[n]{};
+template <typename T>
+Array<T>::Array(unsigned int n){
+	_array = new T[n];
+	_len = n;
 }
 
-Array::~Array(){
+template <typename T>
+Array<T>::~Array(){
 	delete [] _array;
 }
 
-Array::Array(const Array &copy){
+template <typename T>
+Array<T>::Array(const Array &copy){
+	Array::operator=(copy);
 }
 
-Array & Array::operator=(const Array &copy){
+template <typename T>
+Array<T> & Array<T>::operator=(const Array &copy){
+	_array = new T[copy._len];
+	for (unsigned int i = 0; i < copy._len; i++)
+		_array[i] = copy._array[i];
+	_len = copy._len;
+	return (*this);
 }
 
-Array & Array::operator[](unsigned int i){
-	if (i > n){
+template <typename T>
+T & Array<T>::operator[](unsigned int i){
+	if (i >= _len){
 		throw Array::OutOfArray();
 	}
-	return (_array[i]);
+	return (this->_array[i]);
 }
 
-unsigned int size(void){
+template <typename T>
+unsigned int Array<T>::size(void){
 	return (_len);
 }

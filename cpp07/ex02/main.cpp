@@ -1,7 +1,32 @@
+#include <exception>
 #include <iostream>
-#include <Array.hpp>
+#include "Array.hpp"
+#include "Array.tpp"
+#include <cstdlib>
 
 #define MAX_VAL 750
+
+void	own_test(){
+    Array<int> numbers(MAX_VAL);
+	std::cout << "Array len: " << numbers.size() << std::endl;
+    srand(time(NULL));
+    for (int i = 2; i < MAX_VAL; i++)
+    {
+        const int value = rand();
+        numbers[i] = value;
+    }
+	numbers[0] = 10;
+	numbers[1] = 15;
+	std::cout << "tab index 0:" << numbers[0] << std::endl;
+	std::cout << "tab index 1:" << numbers[1] << std::endl;
+	std::cout << "tab index 2:" << numbers[2] << std::endl;
+	try {
+		std::cout << "out of range:" << numbers[755] << std::endl;
+	} catch (std::exception & e) {
+		std::cout << e.what() << std::endl;
+	}
+}
+
 int main(int, char**)
 {
     Array<int> numbers(MAX_VAL);
@@ -49,5 +74,6 @@ int main(int, char**)
         numbers[i] = rand();
     }
     delete [] mirror;//
+	own_test();
     return 0;
 }

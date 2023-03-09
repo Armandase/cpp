@@ -57,33 +57,33 @@ ScalarConverter::ScalarConverter(char *string)
 	}
 }
 
-void	ScalarConverter::print(){
-	if (_special == -1){
-		if (std::isprint(_c) == 0)
+void	ScalarConverter::print(ScalarConverter &ref){
+	if (ref._special == -1){
+		if (std::isprint(ref._c) == 0)
 			std::cout << "char: " << "Non displayable" << std::endl;
 		else
-			std::cout << "char: " << _c << std::endl;
-		if (_d > 2147483647 || _d < -2147483648)
+			std::cout << "char: " << ref._c << std::endl;
+		if (ref._d > 2147483647 || ref._d < -2147483648)
 			std::cout << "int: " << "Overflow" << std::endl;
 		else
-			std::cout << "int: " << _i << std::endl;
-		if (_f - roundf(_f) > 0)
-			std::cout << "float: " << _f << "f" << std::endl;
+			std::cout << "int: " << ref._i << std::endl;
+		if (ref._f - roundf(ref._f) > 0)
+			std::cout << "float: " << ref._f << "f" << std::endl;
 		else
-			std::cout << std::setprecision(1) << std::fixed << "float: " << _f << "f" << std::endl;
-		if (_d - round(_d) > 0)
-			std::cout << "double: " << _d << std::endl;
+			std::cout << std::setprecision(1) << std::fixed << "float: " << ref._f << "f" << std::endl;
+		if (ref._d - round(ref._d) > 0)
+			std::cout << "double: " << ref._d << std::endl;
 		else
-			std::cout << std::setprecision(1) << std::fixed << "double: " << _d << std::endl;
+			std::cout << std::setprecision(1) << std::fixed << "double: " << ref._d << std::endl;
 	} else {
 		std::cout << "char: Impossible" << std::endl;
 		std::cout << "int: Impossible" << std::endl;
-		if (_special > 2){
-			std::cout << "float: " << _str << "f" << std::endl;
-			std::cout << "double: " << _str << std::endl;
+		if (ref._special > 2){
+			std::cout << "float: " << ref._str << "f" << std::endl;
+			std::cout << "double: " << ref._str << std::endl;
 		} else {
-			std::cout << "float: " << _str << std::endl;
-			std::string tmp = _str;
+			std::cout << "float: " << ref._str << std::endl;
+			std::string tmp = ref._str;
 			tmp = tmp.substr(0, (tmp.length()-1));
 			std::cout << "double: " << tmp << std::endl;
 		}
@@ -95,7 +95,7 @@ bool	ScalarConverter::isChar(char *str){
 			|| (*str == 'f' && !*(str + 1))
 			|| ((*str < '0' || *str > '9') && !*(str + 1))){
 		{
-			_c = *str;
+			ScalarConverter::_c = *str;
 			_i = static_cast<int>(_c);
 			_f = static_cast<float>(_c);
 			_d = static_cast<double>(_c);
@@ -181,7 +181,7 @@ bool	ScalarConverter::isFloat(char *str){
 			return (1);
 		}
 	}
-	if (str[i] == 'f' && std::strlen(str) > 1)
+	if (str[i] == 'f' && std::strlen(str) > 1 && str[0] != '.')
 	{
 		char	*endPtr;
 		_f = std::strtof(str, &endPtr);
