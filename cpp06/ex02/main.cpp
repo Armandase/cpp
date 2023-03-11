@@ -57,6 +57,8 @@ void	identify(Base& p){
 
 int main (void){
 	Base * ret = generate();
+	std::cout << "Random base between A, B and C was generated." << std::endl;
+	std::cout << "Base generated: " << std::endl;
 	identify(ret);
 	identify(ret);
 }
