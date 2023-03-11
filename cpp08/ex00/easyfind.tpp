@@ -1,14 +1,15 @@
 #include <algorithm>
 #include <vector>
+#include <iostream>
 
 template <typename T>
 
-std::vector<int>::iterator easyfind(T t, int nb)
+int	easyfind(T &t, int nb)
 {
 	std::vector<int>::iterator ret;
 	ret  = std::find(t.begin(), t.end(), nb); 
-	if (ret == t.end() && t.at(t.size()) != nb){
+	if (ret == t.end()){
 		throw ("The number isn't inside the vector");
 	}
-	return (ret);
+	return (ret - t.begin());
 }
