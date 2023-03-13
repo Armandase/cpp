@@ -4,7 +4,7 @@
 #include <vector>
 #include <stack>
 
-template <typename T, class container=std::vector<T> >
+template <typename T, class container=std::deque<T> >
 
 class MutantStack : public std::stack<T>
 {
@@ -17,7 +17,7 @@ class MutantStack : public std::stack<T>
 		iterator	end();
 		iterator	begin();
 	 protected:
-		container _vect;
+		using std::stack<T>::c;
 };
 
 #endif

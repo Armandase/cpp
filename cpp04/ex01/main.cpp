@@ -47,5 +47,15 @@ int main()
 	for (int i = 0; i < n; i++)
 		delete b[i];
 	std::cout << "destruction done" << std::endl;
+	std::cout << "copy " << std::endl;
+	{
+		Cat *cat = new Cat();
+		cat->setIdea("Armand le bg");
+		cat->getIdeas();
+		Cat *cat2 = new Cat(*cat);
+		delete cat;
+		cat2->getIdeas();
+		delete cat2;
+	}
 	return 0;
 }

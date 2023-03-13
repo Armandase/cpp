@@ -20,7 +20,6 @@ int main()
 	--it;
 	while (it != ite)
 	{
-		std::cout << "inside" << std::endl;
 		std::cout << *it << std::endl;
 		++it;
 	}

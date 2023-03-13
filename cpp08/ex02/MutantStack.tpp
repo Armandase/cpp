@@ -22,12 +22,12 @@ MutantStack<T, U> & MutantStack<T, U>::operator=(const MutantStack &copy){
 
 template <typename T, typename U>
 typename MutantStack<T, U>::iterator MutantStack<T, U>::begin(){
-	return(MutantStack->std::stack->begin());
+	return(c.begin());
 }
 
 template <typename T, typename U>
 typename MutantStack<T, U>::iterator MutantStack<T, U>::end(){
-	return(MutantStack->std::stack->end());
+	return(c.end());
 }
 
 #endif
