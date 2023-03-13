@@ -4,7 +4,7 @@
 #include <vector>
 #include <stack>
 
-template <typename T>
+template <typename T, class container=std::vector<T> >
 
 class MutantStack : public std::stack<T>
 {
@@ -13,35 +13,11 @@ class MutantStack : public std::stack<T>
 		~MutantStack();
 		MutantStack (const MutantStack &copy);
 		MutantStack &operator=(const MutantStack&);
-		class iterator
-		{
-			 public:
-				iterator();
-				~iterator();
-				iterator (const iterator &copy);
-				iterator &operator=(const iterator&);
-			 private:
-				int	_index;
-				
-		};
-
-
-		//A deplacer dans iterator.cpp
-		iterator::iterator(){
-		}
-
-		iterator::~iterator(){
-		}
-
-		iterator::iterator(const iterator &copy){
-		}
-
-		iterator & iterator::operator=(const iterator &copy){
-		}
-
-		
-	 private:
-		
+		typedef typename container::iterator iterator;
+		iterator	end();
+		iterator	begin();
+	 protected:
+		container _vect;
 };
 
 #endif

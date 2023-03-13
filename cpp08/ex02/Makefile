@@ -1,6 +1,6 @@
-NAME	= span
+NAME	= mutantStack
 CC		= c++
-FLAGS	= -Wall -Wextra -Werror -std=c++98 -Ofast
+FLAGS	= -Wall -Wextra -Werror -std=c++98
 SRC		= main.cpp
 OBJ		= ${SRC:.cpp=.o}
 
