@@ -7,6 +7,44 @@
 #include <string>
 #include <cstring>
 
+bool	checkDate(std::string line){
+	std::string	date;
+	long		tmp;
+	char		*cmp;
+
+	date = line.substr(0, line.find("-"));
+	tmp = std::strtol(date.c_str(), &cmp, 10);
+	if (cmp == date || tmp < 0 || tmp > 2030){
+		return (false);
+	}
+	date = line.substr(date.length() + 1, line.find("-") - 1);
+	tmp = std::strtol(date.c_str(), &cmp, 10);
+	if (cmp == date || tmp > 12 || tmp < 1){
+		return (false);
+	}
+	date = line.substr(line.substr(0, line.find("-")).length() + 1 + date.length(), line.find(" ") - 1);
+	tmp = std::strtol(date.c_str(), &cmp, 10);
+	if (cmp == date || tmp > 31 || tmp < 1){
+		return (false);
+	}
+	return (true);
+}
+
+bool	checkNumber(std::string line){
+	std::string	number;
+	long		nu;
+	char		*cmp;
+
+	number = line.substr(line.find("|") + 1, line.length());
+	nu = std::strtol(number.c_str(), &cmp, 10);
+	if (cmp == number || nu < 0 || nu > 1000){
+		return (false);
+	}
+	return (true);
+}
+
+void	displayResult(std::string line){}
+
 void	file_parsing(char *av)
 {
 	std::ifstream file;
@@ -20,19 +58,16 @@ void	file_parsing(char *av)
 
 	std::string line;
 	while (std::getline(file, line)){
-		std::string	date;
-		long		tmp;
-		char		*cmp;
-		if (line.find("|") == std::string::npos){
+		if (line == "date | value")
+			continue ;
+		else if (line.find("|") == std::string::npos)
 			std::cout << "Error: Wrong format" << std::endl;
-		}
-		date = line.substr(0, line.find("-"));
-		tmp = std::strtol(date.c_str(), &cmp, 10);
-		if (cmp == date || tmp > 1000 || tmp < 0)
-		{
-			std::cout << "Error: too large number" << std::endl;
-			std::exit(0);
-		}
+		else if (checkDate(line) == false)
+			std::cout << "Error: wrong date format" << std::endl;
+		else if (checkNumber(line) == false)
+			std::cout << "Error: wrong value" << std::endl;
+		else
+			displayResult(line);
 	}
 }
 
