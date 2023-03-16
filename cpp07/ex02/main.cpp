@@ -12,7 +12,7 @@ void	own_test(){
     srand(time(NULL));
     for (int i = 2; i < MAX_VAL; i++)
     {
-        const int value = rand();
+        const int value = (rand() % 10) + 1;
         numbers[i] = value;
     }
 	numbers[0] = 10;
@@ -23,7 +23,7 @@ void	own_test(){
 	try {
 		std::cout << "out of range:" << numbers[755] << std::endl;
 	} catch (std::exception & e) {
-		std::cout << e.what() << std::endl;
+		e.what();
 	}
 }
 

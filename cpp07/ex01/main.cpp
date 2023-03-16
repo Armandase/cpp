@@ -17,6 +17,7 @@ void	toLowercase(std::string &str){
 int	main(void)
 {
 	{
+		std::cout << "int tab - function add 1 on each elements\n" << std::endl;
 		int array[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 		std::cout << "initiale : ";
 		for (int i = 0; i < 9; i++){
@@ -30,7 +31,10 @@ int	main(void)
 		}
 		std::cout << std::endl;
 	}
+		std::cout << std::endl;
+		std::cout << std::endl;
 	{
+		std::cout << "string tab - function to upper\n" << std::endl;
 		std::string strs[7] = {"aBon", "Bon", "Cuit", "Druide" , "etoile", "FOIRE", "glObe"};
 		std::cout << "initiale : ";
 		for (int i = 0; i < 7; i++){
