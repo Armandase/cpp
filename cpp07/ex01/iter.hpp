@@ -4,10 +4,12 @@
 template <typename T, typename L, typename F>
 
 void	iter(T addr, L len, F foo){
-	L initLen = len;
-	while (len){
-		foo(addr[initLen - len]);
-		len--;
+	L i = 0;
+
+	for(T it = &addr[0]; i < len && *it!=addr[sizeof(T)]; ++it)
+	{
+		foo(*it);
+		i++;
 	}
 }
 
