@@ -37,6 +37,13 @@ void	PmergeMe::printInput(char **input)
 	std::cout << std::endl;
 }
 
+std::list<int> mergeListSort(std::list<int>	list){
+	if (list.size() == 1)
+		return (list);
+	std::list<int>	a;
+	std::list<int>	b;
+}
+
 PmergeMe::PmergeMe(char **input){
 	long	nb;
 	char	*cmp;
@@ -52,6 +59,7 @@ PmergeMe::PmergeMe(char **input){
 	}
 	std::cout << std::endl;
 	clock_t begin = clock();
+	mergeListSort(_list);
 	_list.sort();
 	clock_t end = clock();
 	double timeList = static_cast<double>(end - begin) / CLOCKS_PER_SEC;
