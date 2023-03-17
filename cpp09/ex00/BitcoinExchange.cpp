@@ -108,7 +108,7 @@ void	BitcoinExchange::getInputFile(char *av)
 		if (line == "date | value")
 			continue ;
 		else if (line.find("|") == std::string::npos)
-			std::cout << "Error: Wrong format" << std::endl;
+			std::cout << "Error: wrong format" << std::endl;
 		else if (checkDate(line) == false)
 			std::cout << "Error: wrong date format" << std::endl;
 		else if (checkNumber(line) == false)
