@@ -14,19 +14,43 @@ void	toLowercase(std::string &str){
 	}
 }
 
+class Awesome
+{
+	public:
+		Awesome( void ) : _n( 42 ) { return; }
+		int get( void ) const { return this->_n; }
+		bool operator!=( Awesome const & rhs ) const{ return (this->_n != rhs._n); }
+	private:
+		int _n;
+};
+
+std::ostream & operator<<( std::ostream & o, Awesome const & rhs ) { o << rhs.get(); return o; }
+
+template< typename T >
+void print( T const & x ) { std::cout << x << std::endl; return; }
+
+
 int	main(void)
 {
 	{
+		std::cout << "Correction main:" << std::endl;
+		int tab[] = { 0, 1, 2, 3, 4 };  // <--- I never understood why you can't write int[] tab. Wouldn't that make more sense?
+		Awesome tab2[5];
+
+		iter( tab, 5, print<int> );
+		iter( tab2, 5, print<Awesome> );
+	}
+	{
 		std::cout << "int tab - function add 1 on each elements\n" << std::endl;
-		int array[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+		int array[8] = {1, 2, 3, 4, 5, 6, 7, 8};
 		std::cout << "initiale : ";
-		for (int i = 0; i < 9; i++){
+		for (int i = 0; i < 8; i++){
 			std::cout << array[i]  << " ; ";
 		}
 		std::cout << std::endl;
-		iter(array, 9, &increment);
+		iter(array, 8, &increment);
 		std::cout << "after iter : ";
-		for (int i = 0; i < 9; i++){
+		for (int i = 0; i < 8; i++){
 			std::cout << array[i]  << " ; ";
 		}
 		std::cout << std::endl;

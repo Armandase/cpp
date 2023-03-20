@@ -1,4 +1,5 @@
 #include "BitcoinExchange.hpp"
+#include <exception>
 
 
 
@@ -9,7 +10,11 @@ int	main(int ac, char **av)
 		std::cout << "Error: could not open file." << std::endl;
 		return (1);
 	}
-	convert.getDataBase();
-	convert.getInputFile(av[1]);
+	try {
+		convert.getDataBase();
+		convert.getInputFile(av[1]);
+	} catch (std::exception & e) {
+		std::cout << e.what() << std::endl;
+	}
 	return (0);
 }

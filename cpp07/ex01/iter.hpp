@@ -1,14 +1,21 @@
 #ifndef ITER_HPP
 #define ITER_HPP
 
+#include <iostream>
+
 template <typename T, typename L, typename F>
 
 void	iter(T addr, L len, F foo){
 	L i = 0;
+	L real = 0;
+	if (sizeof(T[0]))
+		real = sizeof(T) / sizeof(T[0]);
+	else 
+		real = sizeof(T);
 
-	for(T it = &addr[0]; i < len && *it!=addr[sizeof(T)]; ++it)
+	while ( i < len && i < real)
 	{
-		foo(*it);
+		foo(addr[i]);
 		i++;
 	}
 }
