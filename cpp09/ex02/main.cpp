@@ -1,3 +1,4 @@
+#include <exception>
 #include <iostream>
 #include <string>
 #include "PmergeMe.hpp"
@@ -10,8 +11,12 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	av++;
-	PmergeMe	calcul(av);
-	PmergeMe	tmp(calcul);
+	try {
+		PmergeMe	calcul(av);
+		PmergeMe	tmp(calcul);
+	} catch (std::exception & e) {
+		std::cout << e.what() << std::endl;
+	}
 
 	return (0);
 }

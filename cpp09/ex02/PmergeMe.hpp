@@ -1,7 +1,7 @@
 #ifndef PMEGEME_HPP
 #define PMEGEME_HPP
 
-#include <list>
+#include <deque>
 #include <vector>
 
 class PmergeMe
@@ -17,12 +17,12 @@ class PmergeMe
 		{
 			virtual const char * what() const throw()
 			{
-				return ("The string given as parameter can't be use to a rpn");
+				return ("wrong parameters");
 			}
 		};
 	 private:
 		void	printInput(char **input);
-		std::list<int>	_list;
+		std::deque<int>	_deque;
 		std::vector<int>_vec;
 };
 
