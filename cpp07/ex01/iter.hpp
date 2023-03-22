@@ -7,13 +7,13 @@ template <typename T, typename L, typename F>
 
 void	iter(T addr, L len, F foo){
 	L i = 0;
-	L real = 0;
-	if (sizeof(T[0]))
-		real = sizeof(T) / sizeof(T[0]);
-	else 
-		real = sizeof(T);
 
-	while ( i < len && i < real)
+	if (len < 0 || len > static_cast<int>(sizeof(T)))
+	{
+		std::cerr << "wrong len" << std::endl;
+		return ;
+	}
+	while ( i < len)
 	{
 		foo(addr[i]);
 		i++;
