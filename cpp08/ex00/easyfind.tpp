@@ -1,14 +1,13 @@
 #include <algorithm>
-#include <vector>
 #include <iostream>
 
 template <typename T>
 
 int	easyfind(T &t, int nb)
 {
-	std::vector<int>::iterator ret;
-	ret  = std::find(t.begin(), t.end(), nb); 
-	if (ret == t.end()){
+	int ret;
+	ret  = std::find(t.begin(), t.end(), nb) - t.begin(); 
+	if (ret == static_cast<int>(t.size())){
 		throw ("The number isn't inside the vector");
 	}
 	return (ret - t.begin());
