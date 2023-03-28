@@ -1,10 +1,10 @@
 #include "PmergeMe.hpp"
-#include <cstdlib>
 #include <iostream>
 #include <ctime>
 #include <algorithm>
 #include <iterator>
 #include <vector>
+#include "insertSort.tpp"
 
 PmergeMe::PmergeMe(){
 }
@@ -54,8 +54,10 @@ std::vector<int> mergeVecSort(std::vector<int>	vec){
 	left = mergeVecSort(std::vector<int>(vec.begin(), vec.begin() + mid));
 	right = mergeVecSort(std::vector<int>(vec.begin() + mid, vec.begin() + vec.size()));
 
-	std::sort(left.begin(), left.end());
-	std::sort(right.begin(), right.end());
+	//std::sort(left.begin(), left.end());
+	//std::sort(right.begin(), right.end());
+	insertSort(left, left.size() -1);
+	insertSort(right, right.size() -1);
 	std::merge(left.begin(), left.end(), right.begin(), right.end(), std::back_inserter(ret));
 	return (ret);
 }
@@ -75,8 +77,10 @@ std::deque<int> mergeDequeSort(std::deque<int>	deque){
 	left = mergeDequeSort(std::deque<int>(deque.begin(), deque.begin() + mid));
 	right = mergeDequeSort(std::deque<int>(deque.begin() + mid, deque.begin() + deque.size()));
 
-	std::sort(left.begin(), left.end());
-	std::sort(right.begin(), right.end());
+	//std::sort(left.begin(), left.end());
+	//std::sort(right.begin(), right.end());
+	insertSort(left, left.size() -1);
+	insertSort(right, right.size() -1);
 	std::merge(left.begin(), left.end(), right.begin(), right.end(), std::back_inserter(ret));
 	return (ret);
 }
