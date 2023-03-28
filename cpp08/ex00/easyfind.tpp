@@ -4,12 +4,12 @@
 
 template <typename T>
 
-int	easyfind(T &t, int nb)
+typename T::iterator easyfind(T &t, int nb)
 {
-	std::vector<int>::iterator ret;
+	typename T::iterator ret;
 	ret  = std::find(t.begin(), t.end(), nb); 
 	if (ret == t.end()){
-		throw ("The number isn't inside the vector");
+		throw std::logic_error("The number isn't inside the vector");
 	}
-	return (ret - t.begin());
+	return (ret);
 }

@@ -1,27 +1,55 @@
+#include "easyfind.tpp"
 #include <exception>
 #include <vector>
-#include "easyfind.tpp"
-#include <iostream>
+#include <list>
+#include <deque>
 
-int	main(void)
+int    main(void)
 {
-	std::vector<int>	tab;
-	for (int i = 0; i < 10; i++){
-		int 	tmp;
-		tmp = i * 2;
-		tab.push_back(tmp);
-	}
-	for (int i = 0; i < 10; i++)
-		std::cout << tab.at(i) << "; ";
-	std::cout << std::endl;
-	int val;
-	try {
-		val = easyfind(tab, 18);
-	} catch (const char *err) {
-		std::cout << err << std::endl;
-		return (1);
-	}
-	std::cout << "ret of easyfind from zero: " << val << std::endl;
-	std::cout << "content: " << tab.at(val) << std::endl;
-	return (0);
+    {
+        std::vector<int> container;
+		std::vector<int>::iterator it;
+
+        for (int i = 0; i < 10; i++)
+            container.push_back(i);
+		try{
+        	it = easyfind(container, 5);
+			std::cout << "result: " << *it << std::endl;
+        	it = easyfind(container, 15);        
+			std::cout << "result: " << *it << std::endl;
+		} catch (std::exception & e){
+			std::cout << e.what() << std::endl;
+		}
+    }
+    {
+        std::deque<int> container;
+        std::deque<int>::iterator it;
+
+        for (int i = 0; i < 10; i++)
+            container.push_back(i);
+		try{
+        	it = easyfind(container, 5);
+			std::cout << "result: " << *it << std::endl;
+        	it = easyfind(container, 15);        
+			std::cout << "result: " << *it << std::endl;
+		} catch (std::exception & e){
+			std::cout << e.what() << std::endl;
+		}
+    }
+    {
+        std::list<int> container;
+        std::list<int>::iterator it;
+
+        for (int i = 0; i < 10; i++)
+            container.push_back(i);
+		try{
+        	it = easyfind(container, 5);
+			std::cout << "result: " << *it << std::endl;
+        	it = easyfind(container, 15);        
+			std::cout << "result: " << *it << std::endl;
+		} catch (std::exception & e){
+			std::cout << e.what() << std::endl;
+		}
+    }
+    return (0);
 }
