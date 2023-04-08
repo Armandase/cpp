@@ -49,6 +49,8 @@ bool	checkNumber(std::string line, std::string split, int max){
 	char		*cmp;
 
 	number = line.substr(line.find(split) + 1, line.length());
+	if (number.find_first_not_of("0123456789. ") != std::string::npos || *number.rbegin() == '.')
+		return (false);
 	nu = std::strtol(number.c_str(), &cmp, 10);
 	if (cmp == number || nu < 0 || nu > max){
 		return (false);
@@ -57,7 +59,8 @@ bool	checkNumber(std::string line, std::string split, int max){
 }
 
 void	BitcoinExchange::getDataBase(){
-	std::ifstream fileData;
+	std::ifstream	fileData;
+	int		i = 0;
 
 	fileData.open("data.csv");
 	if (!fileData){
@@ -66,7 +69,7 @@ void	BitcoinExchange::getDataBase(){
 	}
 	std::string line;
 	while (std::getline(fileData, line)){
-		if (line == "date,exchange_rate")
+		if (line == "date,exchange_rate" && i == 0)
 			continue ;
 		else if (line.find(",") == std::string::npos)
 			throw BitcoinExchange::WrongData();
@@ -75,6 +78,7 @@ void	BitcoinExchange::getDataBase(){
 		else if (checkNumber(line, ",", 2147483647) == false)
 			throw BitcoinExchange::WrongData();
 		data[line.substr(0, line.find(","))] = std::atof(line.substr(line.find(",") + 1, line.find("\n")).c_str());
+		i++;
 	}
 }
 
@@ -84,7 +88,11 @@ void	BitcoinExchange::displayLine(std::string line){
 	std::string	number;
 	char		*cmp;
 
-	date = line.substr(0, line.find(" "));
+	date = line.substr(0, line.find(" | "));
+	if (date.length() == line.length()){
+		std::cout << "Error: wrong date format" << std::endl;
+		return ;
+	}
 	number = line.substr(line.find("|") + 2, line.size());
 	value = std::strtof(number.c_str(), &cmp);
 
@@ -104,7 +112,8 @@ void	BitcoinExchange::displayLine(std::string line){
 
 void	BitcoinExchange::getInputFile(char *av)
 {
-	std::ifstream file;
+	std::ifstream 	file;
+	int		i = 0;
 
 	file.open(av);
 	if (!file){
@@ -114,7 +123,7 @@ void	BitcoinExchange::getInputFile(char *av)
 
 	std::string line;
 	while (std::getline(file, line)){
-		if (line == "date | value")
+		if (line == "date | value" && i == 0)
 			continue ;
 		else if (line.find("|") == std::string::npos)
 			std::cout << "Error: wrong format" << std::endl;
@@ -124,5 +133,6 @@ void	BitcoinExchange::getInputFile(char *av)
 			std::cout << "Error: wrong value" << std::endl;
 		else
 			displayLine(line);
+		i++;
 	}
 }
