@@ -29,7 +29,7 @@ bool	BitcoinExchange::checkDate(std::string line){
 
 	date = line.substr(0, line.find("-"));
 	tmp = std::strtol(date.c_str(), &cmp, 10);
-	if (cmp == date || tmp < 0 || tmp > 2030){
+	if (cmp == date || tmp < 2009 || tmp > 2030){
 		return (false);
 	}
 	if ((tmp % 4 == 0 && tmp % 100 != 0) || tmp % 400 == 0)
@@ -81,7 +81,7 @@ void	BitcoinExchange::getDataBase(){
 			throw BitcoinExchange::WrongData();
 		else if (checkNumber(line, ",", 2147483647) == false)
 			throw BitcoinExchange::WrongData();
-		data[line.substr(0, line.find(","))] = std::atof(line.substr(line.find(",") + 1, line.find("\n")).c_str());
+		data.insert(std::pair<std::string, float>(line.substr(0, line.find(",")), std::atof(line.substr(line.find(",") + 1, line.find("\n")).c_str())));
 		i++;
 	}
 }
@@ -100,18 +100,12 @@ void	BitcoinExchange::displayLine(std::string line){
 	number = line.substr(line.find("|") + 2, line.size());
 	value = std::strtof(number.c_str(), &cmp);
 
-	for (in = data.begin(); in != data.end(); in++){
-		next = in;
-		std::advance(next, 1);
-		if (in->first == date ||
-				(next != data.end() && ((next->first <= date && in->first >= date)
-				 || (next->first >= date && in->first <= date)))){
-			std::cout << date << " => " << value;
-			std::cout << " = " << value * in->second << std::endl;
-			return ;
-		}
-	}
-	std::cout << "Error: no matching date" << std::endl;
+	std::map<std::string, float>::iterator it;
+
+	it = data.upper_bound(date);
+	it--;
+	std::cout << date << " => " << value;
+	std::cout << " = " << value * it->second << std::endl;
 }
 
 void	BitcoinExchange::getInputFile(char *av)
