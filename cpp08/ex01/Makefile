@@ -10,7 +10,7 @@ $(NAME): ${OBJ}
 	${CC} ${FLAGS} -o ${NAME} ${SRC}
 
 .cpp.o:
-	${CC} ${FLAGS} -c $< -o ${<:.cpp=.o}
+	${CC} ${FLAGS} -c $< -o ${<:.cpp=.o} -g
 
 clean:
 	rm -f ${OBJ}

@@ -23,21 +23,25 @@ BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange &copy){
 bool	BitcoinExchange::checkDate(std::string line){
 	std::string	date;
 	long		tmp;
+	long		mounth;
 	char		*cmp;
+	int			verif[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30 ,31};
 
 	date = line.substr(0, line.find("-"));
 	tmp = std::strtol(date.c_str(), &cmp, 10);
 	if (cmp == date || tmp < 0 || tmp > 2030){
 		return (false);
 	}
+	if ((tmp % 4 == 0 && tmp % 100 != 0) || tmp % 400 == 0)
+		verif[1]++;
 	date = line.substr(date.length() + 1, line.find("-") - 1);
-	tmp = std::strtol(date.c_str(), &cmp, 10);
-	if (cmp == date || tmp > 12 || tmp < 1){
+	mounth = std::strtol(date.c_str(), &cmp, 10);
+	if (cmp == date || mounth > 12 || mounth < 1){
 		return (false);
 	}
 	date = line.substr(line.substr(0, line.find("-")).length() + 1 + date.length(), line.find(" ") - 1);
 	tmp = std::strtol(date.c_str(), &cmp, 10);
-	if (cmp == date || tmp > 31 || tmp < 1){
+	if (cmp == date || tmp < 1 || tmp > verif[mounth - 1]){
 		return (false);
 	}
 	return (true);

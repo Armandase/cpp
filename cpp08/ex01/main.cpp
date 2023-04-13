@@ -1,30 +1,48 @@
 #include "Span.hpp"
+#include <exception>
 
 void	own_test(){
-	Span sp = Span(70);
+	std::vector<int> test;
+
+	test.push_back(10);
+	test.push_back(20);
+	test.push_back(30);
+	test.push_back(40);
+	test.push_back(50);
+	test.push_back(60);
+	Span sp = Span(7);
 	
 	try{
-		sp.addMultipleNumbers(7000, -7000);
-	} catch (const char * err){
-		std::cout << err << std::endl;
+		sp.addMultipleNumbers(test.begin(), test.end());
+	} catch (std::exception & e){
+		std::cout << e.what() << std::endl;
 	}
 	try{
-		sp.addMultipleNumbers(4, 7000);
-	} catch (const char * err){
-		std::cout << err << std::endl;
+		sp.addMultipleNumbers(test.begin(), test.end());
+	} catch (std::exception & e){
+		std::cout << e.what() << std::endl;
 	}
-	std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
-	std::cout << "longest span: " << sp.longestSpan() << std::endl;
+	try {
+		std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
+		std::cout << "longest span: " << sp.longestSpan() << std::endl;
+	} catch (std::exception & e) {
+		std::cout << e.what() << std::endl;
+	}
 	{
 		Span ap = Span(100000000);
 		try{
-			ap.addMultipleNumbers(1000000, 424242);
-		} catch (const char * err){
-			std::cout << err << std::endl;
+			for (int i = 0; i < 1000; i++)
+				ap.addMultipleNumbers(test.begin(), test.end());
+		} catch (std::exception & e){
+			std::cout << e.what() << std::endl;
 		}
-		ap.addNumber(5);
-		std::cout << "shortest span: " << ap.shortestSpan() << std::endl;
-		std::cout << "longest span: " << ap.longestSpan() << std::endl;
+		try {
+			ap.addNumber(5);
+			std::cout << "shortest span: " << sp.shortestSpan() << std::endl;
+			std::cout << "longest span: " << sp.longestSpan() << std::endl;
+		} catch (std::exception & e) {
+			std::cout << e.what() << std::endl;
+		}
 	}
 }
 
