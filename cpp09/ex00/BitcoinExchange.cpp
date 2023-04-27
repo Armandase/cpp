@@ -1,4 +1,6 @@
 #include "BitcoinExchange.hpp"
+#include <list>
+#include <stdexcept>
 
 BitcoinExchange::BitcoinExchange(){
 }
@@ -84,6 +86,8 @@ void	BitcoinExchange::getDataBase(){
 		data.insert(std::pair<std::string, float>(line.substr(0, line.find(",")), std::atof(line.substr(line.find(",") + 1, line.find("\n")).c_str())));
 		i++;
 	}
+	if (data.size() == 0)
+		throw std::logic_error("Error: empty data");
 }
 
 void	BitcoinExchange::displayLine(std::string line){
@@ -122,7 +126,9 @@ void	BitcoinExchange::getInputFile(char *av)
 	std::string line;
 	while (std::getline(file, line)){
 		if (line == "date | value" && i == 0)
-			continue ;
+		{}
+		else if (line == "date | value")
+			std::cout << "Error: random header" << std::endl;
 		else if (line.find("|") == std::string::npos)
 			std::cout << "Error: wrong format" << std::endl;
 		else if (checkDate(line) == false)
@@ -133,4 +139,6 @@ void	BitcoinExchange::getInputFile(char *av)
 			displayLine(line);
 		i++;
 	}
+	if (i <= 1)
+		std::cout << "Error: empty file" << std::endl;
 }
