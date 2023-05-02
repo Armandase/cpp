@@ -57,5 +57,16 @@ int main()
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 	own_test();
+	{
+		Span big = Span(4);
+		big.addNumber(2147483647);
+		big.addNumber(-2147483648);
+		try {
+			std::cout << "shortest bigan: " << big.shortestSpan() << std::endl;
+			std::cout << "longest bigan: " << big.longestSpan() << std::endl;
+		} catch (std::exception & e) {
+			std::cout << e.what() << std::endl;
+		}
+	}
 	return 0;
 }

@@ -29,6 +29,8 @@ void	RPN::applyCalcul(std::string digit)
 		if (op[i] == digit)
 			break ;
 	}
+	if (_calcul.size() < 2)
+		throw RPN::WrongInput();
 	a = _calcul.top();
 	_calcul.pop();
 	b = _calcul.top();
@@ -44,6 +46,8 @@ void	RPN::applyCalcul(std::string digit)
 			_calcul.push(b * a);
 			break ;
 		case 3:
+			if (a == 0)
+				throw RPN::WrongInput();
 			_calcul.push(b / a);
 			break ;
 		default:
@@ -102,5 +106,7 @@ RPN & RPN::operator=(const RPN &copy){
 }
 
 void	RPN::printResult(){
+	if (_calcul.size() != 1)
+		throw RPN::WrongInput();
 	std::cout << this->_input << " = " << _result << std::endl;
 }

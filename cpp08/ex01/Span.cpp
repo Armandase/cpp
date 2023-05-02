@@ -31,7 +31,7 @@ void	Span::addNumber(int nu){
 	_tab.push_back(nu);
 }
 
-int	Span::shortestSpan(){
+unsigned int	Span::shortestSpan(){
 	int	ret = 2147483647;
 	if (_tab.size() <= 1){
 		throw std::logic_error("There are not enough values");
@@ -45,7 +45,7 @@ int	Span::shortestSpan(){
 	return ret;
 }
 
-int	Span::longestSpan(){
+unsigned int	Span::longestSpan(){
 	int	ret = 0;
 	if (_tab.size() <= 1){
 		throw std::logic_error("There are not enough values");

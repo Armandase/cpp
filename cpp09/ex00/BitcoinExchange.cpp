@@ -51,13 +51,13 @@ bool	BitcoinExchange::checkDate(std::string line){
 
 bool	checkNumber(std::string line, std::string split, int max){
 	std::string	number;
-	long		nu;
+	double		nu;
 	char		*cmp;
 
 	number = line.substr(line.find(split) + 1, line.length());
 	if (number.find_first_not_of("0123456789. ") != std::string::npos || *number.rbegin() == '.')
 		return (false);
-	nu = std::strtol(number.c_str(), &cmp, 10);
+	nu = std::strtod(number.c_str(), &cmp);
 	if (cmp == number || nu < 0 || nu > max){
 		return (false);
 	}

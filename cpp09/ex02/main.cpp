@@ -1,3 +1,4 @@
+#include <cctype>
 #include <exception>
 #include <iostream>
 #include <string>
@@ -12,6 +13,10 @@ int	main(int ac, char **av)
 	}
 	av++;
 	try {
+		for (int i = 0; av[i]; i++)
+			for (int j = 0; av[i][j]; j++)
+				if (isdigit(av[i][j]) == false)
+					throw std::logic_error("just numbers");
 		PmergeMe	calcul(av);
 		PmergeMe	tmp(calcul);
 	} catch (std::exception & e) {

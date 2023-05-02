@@ -25,10 +25,10 @@ int    main(void)
         std::list<int> container;
         std::list<int>::iterator it;
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 100; i < 110; i++)
             container.push_back(i);
 		try{
-        	it = easyfind(container, 5);
+        	it = easyfind(container, 107);
 			std::cout << "result: " << *it << std::endl;
         	it = easyfind(container, 15);        
 			std::cout << "result: " << *it << std::endl;

@@ -1,3 +1,4 @@
+#include <exception>
 #include <iostream>
 #include <string>
 #include "RPN.hpp"
@@ -12,7 +13,11 @@ int	main(int ac, char **av)
 	RPN	calcul(av[1]);
 	RPN tmp(calcul);
 
-	calcul.printResult();
+	try {
+		calcul.printResult();
+	} catch (std::exception & e) {
+		std::cout << e.what() << std::endl;
+	}
 
 	return (0);
 }
