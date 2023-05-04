@@ -15,14 +15,6 @@ class RPN
 
 		void	printResult();
 		void	applyCalcul(std::string digit);
-
-		class WrongInput : public std::exception
-		{
-			virtual const char * what() const throw()
-			{
-				return ("The string given as parameter can't be use to a rpn");
-			}
-		};
 	 private:
 		std::stack<int> _calcul;
 		int				_result;

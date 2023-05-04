@@ -13,13 +13,6 @@ class PmergeMe
 		PmergeMe &operator=(const PmergeMe&);
 		PmergeMe(char **input);
 
-		class WrongInput : public std::exception
-		{
-			virtual const char * what() const throw()
-			{
-				return ("wrong parameters");
-			}
-		};
 	 private:
 		void	printInput(char **input);
 		std::deque<int>	_deque;

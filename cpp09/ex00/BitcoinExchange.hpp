@@ -19,13 +19,6 @@ class BitcoinExchange
 		BitcoinExchange &operator=(const BitcoinExchange&);
 		void	getDataBase();
 		void	getInputFile(char *av);
-		class WrongData : public std::exception
-		{
-			virtual const char * what() const throw()
-			{
-				return ("Error in data.csv");
-			}
-		};
 	 private:
 		bool	checkDate(std::string line);
 		void	displayLine(std::string line);

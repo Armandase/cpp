@@ -33,7 +33,12 @@ void	PmergeMe::printInput(char **input)
 	}
 	std::cout << std::endl;
 	std::cout << "After: ";
+	/*	deque 
 	for (std::deque<int>::iterator it = _deque.begin(); it != _deque.end(); it++){
+		std::cout << *it << " ";
+	}
+	*/
+	for (std::vector<int>::iterator it = _vec.begin(); it != _vec.end(); it++){
 		std::cout << *it << " ";
 	}
 	std::cout << std::endl;
@@ -87,12 +92,11 @@ PmergeMe::PmergeMe(char **input){
 	for (int i = 0; input[i]; i++){
 		nb = std::strtol(input[i], &cmp, 10);
 		if (cmp == input[i] || nb < 0 || nb > 2147483647){
-			throw PmergeMe::WrongInput();
+			throw std::logic_error("wrong number");
 		}
 		_vec.push_back(static_cast<int>(nb));
 		_deque.push_back(static_cast<int>(nb));
 	}
-	std::cout << std::endl;
 	clock_t begin = clock();
 	_vec = mergeVecSort(_vec);
 	clock_t end = clock();
@@ -102,6 +106,6 @@ PmergeMe::PmergeMe(char **input){
 	end = clock();
 	double timeDeque = static_cast<double>(end - begin) / CLOCKS_PER_SEC * 1000;
 	printInput(input);
-	std::cout << "Time to process a range of " << _vec.size() << " elements with std::vec : " << timeVec << " us" << std::endl;
-	std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque : " << timeDeque << " us" << std::endl;
+	std::cout << "Time to process a range of " << _vec.size() << " elements with std::vec : " << timeVec << " ms" << std::endl;
+	std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque : " << timeDeque << " ms" << std::endl;
 }

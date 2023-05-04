@@ -13,7 +13,7 @@ int	convert(std::string digit){
 
 	tmp = std::strtol(digit.c_str(), &cmp, 10);
 	if (cmp == digit || tmp < 0 || tmp > 10){
-		throw RPN::WrongInput();
+		throw std::logic_error("RPN works only with digits");
 	}
 	return (static_cast<int>(tmp));
 }
@@ -30,7 +30,7 @@ void	RPN::applyCalcul(std::string digit)
 			break ;
 	}
 	if (_calcul.size() < 2)
-		throw RPN::WrongInput();
+		throw std::logic_error("The string given as parameter can't be use to a rpn");
 	a = _calcul.top();
 	_calcul.pop();
 	b = _calcul.top();
@@ -47,11 +47,11 @@ void	RPN::applyCalcul(std::string digit)
 			break ;
 		case 3:
 			if (a == 0)
-				throw RPN::WrongInput();
+				throw std::logic_error("Can't divide by 0");
 			_calcul.push(b / a);
 			break ;
 		default:
-			throw RPN::WrongInput();
+			throw std::logic_error("Calcul error with the string given as parameter");
 	}
 }
 
@@ -69,7 +69,7 @@ RPN::RPN(char *input){
 			else if (digit == "+" || digit == "-" || digit == "*" || digit == "/")
 				applyCalcul(digit);
 			else 
-				throw RPN::WrongInput();
+				throw std::logic_error(digit + " can't use in rpn format");
 			_input.erase(0, pos + 1);
 			pos = _input.find(" ");
 		}
@@ -79,10 +79,10 @@ RPN::RPN(char *input){
 		else if (digit == "+" || digit == "-" || digit == "*" || digit == "/")
 			applyCalcul(digit);
 		else 
-			throw RPN::WrongInput();
+			throw std::logic_error(digit + " can't use in rpn format");
 		_input.erase(0, 1);
 		if (_input.length())
-			throw RPN::WrongInput();
+			throw std::logic_error("The string given as parameter can't be use to a rpn");
 		_result = _calcul.top();
 		_input = input;
 	} catch (std::exception & e) {
@@ -107,6 +107,6 @@ RPN & RPN::operator=(const RPN &copy){
 
 void	RPN::printResult(){
 	if (_calcul.size() != 1)
-		throw RPN::WrongInput();
+		throw std::logic_error("Too many numbers at the end of the calculation");
 	std::cout << this->_input << " = " << _result << std::endl;
 }

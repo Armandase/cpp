@@ -78,11 +78,11 @@ void	BitcoinExchange::getDataBase(){
 		if (line == "date,exchange_rate" && i == 0)
 			continue ;
 		else if (line.find(",") == std::string::npos)
-			throw BitcoinExchange::WrongData();
+			throw std::logic_error("Error in data.csv");
 		else if (checkDate(line) == false)
-			throw BitcoinExchange::WrongData();
+			throw std::logic_error("Error in data.csv");
 		else if (checkNumber(line, ",", 2147483647) == false)
-			throw BitcoinExchange::WrongData();
+			throw std::logic_error("Error in data.csv");
 		data.insert(std::pair<std::string, float>(line.substr(0, line.find(",")), std::atof(line.substr(line.find(",") + 1, line.find("\n")).c_str())));
 		i++;
 	}
